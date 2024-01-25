@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>BuildingLeaseData</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{e8a64162-5a23-4f6b-b096-29c0dd77a1dc}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql160DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath />
+    <RootNamespace>BuildingLeaseData</RootNamespace>
+    <AssemblyName>BuildingLeaseData</AssemblyName>
+    <ModelCollation>1042,CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+    <DefaultCollation>Korean_Wansung_CI_AS</DefaultCollation>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo\" />
+    <Folder Include="dbo\Tables\" />
+    <Folder Include="dbo\User Defined Types\" />
+    <Folder Include="dbo\StoredProcedures" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\Tables\AccountHangCode.sql" />
+    <Build Include="dbo\User Defined Types\Phone.sql" />
+    <Build Include="dbo\Tables\AccountCode.sql" />
+    <Build Include="dbo\Tables\Invoice.sql" />
+    <Build Include="dbo\Tables\BankBookCode.sql" />
+    <Build Include="dbo\Tables\BudgetAmount.sql" />
+    <Build Include="dbo\Tables\BuildingCode.sql" />
+    <Build Include="dbo\Tables\BuildingRoomCode.sql" />
+    <Build Include="dbo\Tables\CashBook.sql" />
+    <Build Include="dbo\Tables\GradeType.sql" />
+    <Build Include="dbo\Tables\LeaseContract.sql" />
+    <Build Include="dbo\Tables\Lessee.sql" />
+    <Build Include="dbo\Tables\MaintenanceFeeDetails.sql" />
+    <Build Include="dbo\Tables\User.sql" />
+    <Build Include="dbo\StoredProcedures\sp_DBBackup.sql" />
+    <Build Include="dbo\StoredProcedures\spAccountCode_Delete.sql" />
+    <Build Include="dbo\StoredProcedures\spAccountCode_Exists.sql" />
+    <Build Include="dbo\StoredProcedures\spAccountCode_GetAll.sql" />
+    <Build Include="dbo\StoredProcedures\spAccountCode_GetAllDisplay.sql" />
+    <Build Include="dbo\StoredProcedures\spAccountCode_GetById.sql" />
+    <Build Include="dbo\StoredProcedures\spAccountCode_Insert.sql" />
+    <Build Include="dbo\StoredProcedures\spAccountCode_IsUsed.sql" />
+    <Build Include="dbo\StoredProcedures\spAccountCode_Update.sql" />
+    <Build Include="dbo\StoredProcedures\spAccountHangCode_Delete.sql" />
+    <Build Include="dbo\StoredProcedures\spAccountHangCode_Exists.sql" />
+    <Build Include="dbo\StoredProcedures\spAccountHangCode_GetAll.sql" />
+    <Build Include="dbo\StoredProcedures\spAccountHangCode_GetById.sql" />
+    <Build Include="dbo\StoredProcedures\spAccountHangCode_GetsByInOutgoings.sql" />
+    <Build Include="dbo\StoredProcedures\spAccountHangCode_Insert.sql" />
+    <Build Include="dbo\StoredProcedures\spAccountHangCode_IsUsed.sql" />
+    <Build Include="dbo\StoredProcedures\spAccountHangCode_Update.sql" />
+    <Build Include="dbo\StoredProcedures\spInvoice_Delete.sql" />
+    <Build Include="dbo\StoredProcedures\spInvoice_GetAll.sql" />
+    <Build Include="dbo\StoredProcedures\spInvoice_GetsDisplayByDate.sql" />
+    <Build Include="dbo\StoredProcedures\spInvoice_GetsDisplayByDate1.sql" />
+    <Build Include="dbo\StoredProcedures\spInvoice_Insert.sql" />
+    <Build Include="dbo\StoredProcedures\spInvoice_Update.sql" />
+    <Build Include="dbo\StoredProcedures\spBankBookCode_Delete.sql" />
+    <Build Include="dbo\StoredProcedures\spBankBookCode_Exists.sql" />
+    <Build Include="dbo\StoredProcedures\spBankBookCode_GetAll.sql" />
+    <Build Include="dbo\StoredProcedures\spBankBookCode_GetById.sql" />
+    <Build Include="dbo\StoredProcedures\spBankBookCode_Insert.sql" />
+    <Build Include="dbo\StoredProcedures\spBankBookCode_IsUsed.sql" />
+    <Build Include="dbo\StoredProcedures\spBankBookCode_Update.sql" />
+    <Build Include="dbo\StoredProcedures\spBudgetAmount_GetsDisplayByDate.sql" />
+    <Build Include="dbo\StoredProcedures\spBudgetAmount_Insert.sql" />
+    <Build Include="dbo\StoredProcedures\spBudgetAmount_Update.sql" />
+    <Build Include="dbo\StoredProcedures\spBuildingCode_Delete.sql" />
+    <Build Include="dbo\StoredProcedures\spBuildingCode_Exists.sql" />
+    <Build Include="dbo\StoredProcedures\spBuildingCode_GetAll.sql" />
+    <Build Include="dbo\StoredProcedures\spBuildingCode_GetById.sql" />
+    <Build Include="dbo\StoredProcedures\spBuildingCode_Insert.sql" />
+    <Build Include="dbo\StoredProcedures\spBuildingCode_IsUsed.sql" />
+    <Build Include="dbo\StoredProcedures\spBuildingCode_Update.sql" />
+    <Build Include="dbo\StoredProcedures\spBuildingRoomCode_Delete.sql" />
+    <Build Include="dbo\StoredProcedures\spBuildingRoomCode_Exists.sql" />
+    <Build Include="dbo\StoredProcedures\spBuildingRoomCode_GetAll.sql" />
+    <Build Include="dbo\StoredProcedures\spBuildingRoomCode_GetById.sql" />
+    <Build Include="dbo\StoredProcedures\spBuildingRoomCode_GetsByBuildingCodeId.sql" />
+    <Build Include="dbo\StoredProcedures\spBuildingRoomCode_Insert.sql" />
+    <Build Include="dbo\StoredProcedures\spBuildingRoomCode_IsUsed.sql" />
+    <Build Include="dbo\StoredProcedures\spBuildingRoomCode_Update.sql" />
+    <Build Include="dbo\StoredProcedures\spCashBook_Delete.sql" />
+    <Build Include="dbo\StoredProcedures\spCashBook_GetAll.sql" />
+    <Build Include="dbo\StoredProcedures\spCashBook_GetsDisplayByFromToDate.sql" />
+    <Build Include="dbo\StoredProcedures\spCashBook_Insert.sql" />
+    <Build Include="dbo\StoredProcedures\spCashBook_Update.sql" />
+    <Build Include="dbo\StoredProcedures\spGradeType_Delete.sql" />
+    <Build Include="dbo\StoredProcedures\spGradeType_GetAll.sql" />
+    <Build Include="dbo\StoredProcedures\spGradeType_GetById.sql" />
+    <Build Include="dbo\StoredProcedures\spGradeType_Insert.sql" />
+    <Build Include="dbo\StoredProcedures\spGradeType_Update.sql" />
+    <Build Include="dbo\StoredProcedures\spIncomingsBook_GetsDisplayByFromToDate.sql" />
+    <Build Include="dbo\StoredProcedures\spIncomingsBookTotal_GetsDisplayByFromToDate.sql" />
+    <Build Include="dbo\StoredProcedures\spIncomingsDetails_GetsDisplayByFromToDate.sql" />
+    <Build Include="dbo\StoredProcedures\spLeaseContract_Delete.sql" />
+    <Build Include="dbo\StoredProcedures\spLeaseContract_GetAll.sql" />
+    <Build Include="dbo\StoredProcedures\spLeaseContract_GetAllDisplay.sql" />
+    <Build Include="dbo\StoredProcedures\spLeaseContract_GetById.sql" />
+    <Build Include="dbo\StoredProcedures\spLeaseContract_GetsDisplayByLesseeId.sql" />
+    <Build Include="dbo\StoredProcedures\spLeaseContract_Insert.sql" />
+    <Build Include="dbo\StoredProcedures\spLeaseContract_Update.sql" />
+    <Build Include="dbo\StoredProcedures\spLessee_Delete.sql" />
+    <Build Include="dbo\StoredProcedures\spLessee_Exists.sql" />
+    <Build Include="dbo\StoredProcedures\spLessee_GetAll.sql" />
+    <Build Include="dbo\StoredProcedures\spLessee_GetById.sql" />
+    <Build Include="dbo\StoredProcedures\spLessee_Insert.sql" />
+    <Build Include="dbo\StoredProcedures\spLessee_IsUsed.sql" />
+    <Build Include="dbo\StoredProcedures\spLessee_Update.sql" />
+    <Build Include="dbo\StoredProcedures\spOutgoingsBook_GetsDisplayByFromToDate.sql" />
+    <Build Include="dbo\StoredProcedures\spOutgoingsBookTotal_GetsDisplayByFromToDate.sql" />
+    <Build Include="dbo\StoredProcedures\spUser_Delete.sql" />
+    <Build Include="dbo\StoredProcedures\spUser_Exists.sql" />
+    <Build Include="dbo\StoredProcedures\spUser_GetAll.sql" />
+    <Build Include="dbo\StoredProcedures\spUser_GetById.sql" />
+    <Build Include="dbo\StoredProcedures\spUser_GetByName.sql" />
+    <Build Include="dbo\StoredProcedures\spUser_Insert.sql" />
+    <Build Include="dbo\StoredProcedures\spUser_Update.sql" />
+    <Build Include="dbo\User Defined Types\Name.sql" />
+    <Build Include="dbo\User Defined Types\Flag.sql" />
+    <Build Include="dbo\StoredProcedures\spInvoice_InitByDate.sql" />
+    <Build Include="dbo\StoredProcedures\spInvoice_InitByDate1.sql" />
+    <Build Include="dbo\StoredProcedures\spCashBook_GetPreviousAmountByDate.sql" />
+    <Build Include="dbo\Tables\MaintenanceFeeDetailsSetting.sql" />
+    <Build Include="dbo\StoredProcedures\spMaintenanceFeeDetails_GetsDisplayByDate.sql" />
+    <Build Include="dbo\StoredProcedures\spMaintenanceFeeDetails_InitByDate.sql" />
+    <Build Include="dbo\StoredProcedures\spMaintenanceFeeDetails_Insert.sql" />
+    <Build Include="dbo\StoredProcedures\spMaintenanceFeeDetails_Update.sql" />
+    <Build Include="dbo\StoredProcedures\spMaintenanceFeeDetailsSetting_GetByDate.sql" />
+    <Build Include="dbo\StoredProcedures\spMaintenanceFeeDetailsSetting_InsertUpdate.sql" />
+    <Build Include="dbo\StoredProcedures\spConfig_GetFirst.sql" />
+    <Build Include="dbo\StoredProcedures\spConfig_GetLastExpenseNumber.sql" />
+    <Build Include="dbo\StoredProcedures\spConfig_InsertUpdate.sql" />
+    <Build Include="dbo\StoredProcedures\spConfig_LastExpenseNumber_InsertUpdate.sql" />
+    <Build Include="dbo\Tables\Config.sql" />
+    <Build Include="dbo\StoredProcedures\spLeaseIncomings_GetsDisplayByFromToDate.sql" />
+    <Build Include="dbo\StoredProcedures\spInvoice_GetAllDisplayByDate.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Script.PostDeployment.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="README.md" />
+  </ItemGroup>
+</Project>

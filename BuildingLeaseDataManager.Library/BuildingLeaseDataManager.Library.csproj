@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{561A8827-25A8-4D3E-928A-28CD3D7E720C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BuildingLeaseDataManager.Library</RootNamespace>
+    <AssemblyName>BuildingLeaseDataManager.Library</AssemblyName>
+    <TargetFrameworkVersion>v4.8.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Dapper, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Dapper.2.1.24\lib\net461\Dapper.dll</HintPath>
+    </Reference>
+    <Reference Include="DevExpress.DataAccess.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Xpo.v23.1, Version=23.1.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DataAccess\AsyncSqlDataAccessSample.cs" />
+    <Compile Include="DataAccess\SqlDataAccessSample.cs" />
+    <Compile Include="DataAccess\UserData.cs" />
+    <Compile Include="Internal\DataAccess\AsyncDapperSample.cs" />
+    <Compile Include="Internal\DataAccess\DapperSample.cs" />
+    <Compile Include="Internal\DataAccess\SqlDataAccess.cs" />
+    <Compile Include="Models\AccountCodeModel.cs" />
+    <Compile Include="Models\AccountCodeDisplayModel.cs" />
+    <Compile Include="Models\AccountHangCodeModel.cs" />
+    <Compile Include="Models\InvoiceDisplayModel.cs" />
+    <Compile Include="Models\InvoiceModel.cs" />
+    <Compile Include="Models\BankBookCodeModel.cs" />
+    <Compile Include="Models\BudgetAmountDisplayModel.cs" />
+    <Compile Include="Models\BudgetAmountModel.cs" />
+    <Compile Include="Models\BuildingCodeModel.cs" />
+    <Compile Include="Models\BuildingRoomCodeModel.cs" />
+    <Compile Include="Models\CashBookDisplayModel.cs" />
+    <Compile Include="Models\CashBookModel.cs" />
+    <Compile Include="Models\ConfigModel.cs" />
+    <Compile Include="Models\GradeTypeModel.cs" />
+    <Compile Include="Models\IncomingsBookDisplayModel.cs" />
+    <Compile Include="Models\IncomingsBookTotalDisplayModel.cs" />
+    <Compile Include="Models\IncomingsDetailsDisplayModel.cs" />
+    <Compile Include="Models\InOutgoingsModel.cs" />
+    <Compile Include="Models\LeaseContractDisplayModel.cs" />
+    <Compile Include="Models\LeaseContractModel.cs" />
+    <Compile Include="Models\LeaseContractMultiMappingModel.cs" />
+    <Compile Include="Models\LeaseIncomingsDisplayModel.cs" />
+    <Compile Include="Models\LesseeModel.cs" />
+    <Compile Include="Models\MaintenanceFeeDetailsDisplayModel.cs" />
+    <Compile Include="Models\MaintenanceFeeDetailsModel.cs" />
+    <Compile Include="Models\MaintenanceFeeDetailsSettingModel.cs" />
+    <Compile Include="Models\OutgoingsBookDisplayModel.cs" />
+    <Compile Include="Models\OutgoingsBookTotalDisplayModel.cs" />
+    <Compile Include="Models\UserModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Internal\DataAccess\DBConnection.cs" />
+    <Compile Include="SqlDbAccess\AccountCodeRepository.cs" />
+    <Compile Include="SqlDbAccess\AccountHangCodeRepository.cs" />
+    <Compile Include="SqlDbAccess\InvoiceRepository.cs" />
+    <Compile Include="SqlDbAccess\BankBookCodeRepository.cs" />
+    <Compile Include="SqlDbAccess\BudgetAmountRepository.cs" />
+    <Compile Include="SqlDbAccess\BuildingCodeRepository.cs" />
+    <Compile Include="SqlDbAccess\BuildingRoomCodeRepository.cs" />
+    <Compile Include="SqlDbAccess\CashBookRepository.cs" />
+    <Compile Include="SqlDbAccess\DBBackupRepository.cs" />
+    <Compile Include="SqlDbAccess\GradeTypeRepository.cs" />
+    <Compile Include="SqlDbAccess\IGenericRepository.cs" />
+    <Compile Include="SqlDbAccess\IncomingsBookRepository.cs" />
+    <Compile Include="SqlDbAccess\IncomingsBookTotalRepository.cs" />
+    <Compile Include="SqlDbAccess\IncomingsDetailsRepository.cs" />
+    <Compile Include="SqlDbAccess\LeaseContractRepository.cs" />
+    <Compile Include="SqlDbAccess\LeaseIncomingsRepository.cs" />
+    <Compile Include="SqlDbAccess\LesseeRepository.cs" />
+    <Compile Include="SqlDbAccess\MaintenanceFeeDetailsRepository.cs" />
+    <Compile Include="SqlDbAccess\MaintenanceFeeDetailsSettingRepository.cs" />
+    <Compile Include="SqlDbAccess\OutgoingsBookRepository.cs" />
+    <Compile Include="SqlDbAccess\OutgoingsBookTotalRepository.cs" />
+    <Compile Include="SqlDbAccess\UserRepository.cs" />
+    <Compile Include="SqlDbAccess\ConfigRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+    <None Include="README.md" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

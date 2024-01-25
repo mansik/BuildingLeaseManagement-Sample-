@@ -1,0 +1,72 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34302.85
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DataBase", "DataBase", "{3BB1D8DB-230A-412C-9839-CDD2881705E6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingLease.Library", "BuildingLease.Library\BuildingLease.Library.csproj", "{C9F0B9E1-364B-4EE7-8E7A-B1FCE2356B70}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingLeaseDataManager.Library", "BuildingLeaseDataManager.Library\BuildingLeaseDataManager.Library.csproj", "{561A8827-25A8-4D3E-928A-28CD3D7E720C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{051E693A-6E09-4964-B6A5-034616D6B6A6}"
+	ProjectSection(SolutionItems) = preProject
+		문서\0_ClickOnes_배포방법.md = 문서\0_ClickOnes_배포방법.md
+		문서\0_CodingStyle.md = 문서\0_CodingStyle.md
+		문서\0_Setup_Project_배포방법.md = 문서\0_Setup_Project_배포방법.md
+		문서\DevExpressTip.md = 문서\DevExpressTip.md
+		README.md = README.md
+		문서\건물임대관리 메뉴얼.pdf = 문서\건물임대관리 메뉴얼.pdf
+		수정사항.md = 수정사항.md
+		문서\업무분석.md = 문서\업무분석.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{184D1AFC-78DB-435F-A7BC-5B89114D6881}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{07D2A3D1-B790-4EB5-9AFF-BFEC297B461F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BuildingLeaseUI", "BuildingLeaseUI\BuildingLeaseUI.csproj", "{24660782-26E4-4565-9468-8D4070AB2450}"
+EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "BuildingLeaseData", "BuildingLeaseData\BuildingLeaseData.sqlproj", "{E8A64162-5A23-4F6B-B096-29C0DD77A1DC}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "SetupBuildingLease", "SetupBuildingLease\SetupBuildingLease.vdproj", "{1758D56D-5D97-4704-9059-1F3DDCFEE966}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C9F0B9E1-364B-4EE7-8E7A-B1FCE2356B70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9F0B9E1-364B-4EE7-8E7A-B1FCE2356B70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9F0B9E1-364B-4EE7-8E7A-B1FCE2356B70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9F0B9E1-364B-4EE7-8E7A-B1FCE2356B70}.Release|Any CPU.Build.0 = Release|Any CPU
+		{561A8827-25A8-4D3E-928A-28CD3D7E720C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{561A8827-25A8-4D3E-928A-28CD3D7E720C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{561A8827-25A8-4D3E-928A-28CD3D7E720C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{561A8827-25A8-4D3E-928A-28CD3D7E720C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24660782-26E4-4565-9468-8D4070AB2450}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24660782-26E4-4565-9468-8D4070AB2450}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24660782-26E4-4565-9468-8D4070AB2450}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24660782-26E4-4565-9468-8D4070AB2450}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8A64162-5A23-4F6B-B096-29C0DD77A1DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8A64162-5A23-4F6B-B096-29C0DD77A1DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8A64162-5A23-4F6B-B096-29C0DD77A1DC}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{E8A64162-5A23-4F6B-B096-29C0DD77A1DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8A64162-5A23-4F6B-B096-29C0DD77A1DC}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{1758D56D-5D97-4704-9059-1F3DDCFEE966}.Debug|Any CPU.ActiveCfg = Debug
+		{1758D56D-5D97-4704-9059-1F3DDCFEE966}.Release|Any CPU.ActiveCfg = Release
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C9F0B9E1-364B-4EE7-8E7A-B1FCE2356B70} = {07D2A3D1-B790-4EB5-9AFF-BFEC297B461F}
+		{561A8827-25A8-4D3E-928A-28CD3D7E720C} = {07D2A3D1-B790-4EB5-9AFF-BFEC297B461F}
+		{24660782-26E4-4565-9468-8D4070AB2450} = {184D1AFC-78DB-435F-A7BC-5B89114D6881}
+		{E8A64162-5A23-4F6B-B096-29C0DD77A1DC} = {3BB1D8DB-230A-412C-9839-CDD2881705E6}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B3725E65-5DE3-49CE-AC61-AF5DFF62D613}
+	EndGlobalSection
+EndGlobal
