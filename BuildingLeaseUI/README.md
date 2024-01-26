@@ -17,10 +17,10 @@
 	* Modules: DevExpress User Control
 
 ## 환경
-* Visual Studio: [ ] 2019, [x] 2022
+* Visual Studio: [x] 2022
 * 프로젝트 생성: [x] .Net Framework, [ ] .Net WinForm(windows form)
 * Package 
-  * [x] DevExpress 23.1
+  * [x] DevExpress 23.2
 * NuGet
   * [ ] Dapper
   * [ ] System.Data.SqlClient

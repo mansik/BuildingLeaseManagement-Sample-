@@ -67,14 +67,15 @@
 	* Solution Items-> 0_Setup_Project_배포방법.md 파일 참고
 
 ## 환경
-* Visual Studio: [ ] 2019, [x] 2022
+* Visual Studio: [x] 2022
 * 프로젝트 생성: [x] .Net Framework, [ ] .Net WinForm(windows form)
 * Package 
-  * [x] DevExpress 23.1
+  * [x] DevExpress 23.2
 * NuGet
   * [x] Dapper
   * [x] System.Data.SqlClient
 * 메뉴 -> 확장 -> Microsoft Visual Studio Installer Project 2022 설치
+* DATABASE: MS SQL SERVER 2022
 	
 # 파일 버전 관리
 * 만약 버전변경을 한다면 Assembly version은 고정하고, Assembly File Version만 변경할 것.

@@ -278,7 +278,7 @@
             this.xrLabel40.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
             this.xrLabel40.SizeF = new System.Drawing.SizeF(578.2712F, 58.42004F);
             this.xrLabel40.StylePriority.UseBorders = false;
-            this.xrLabel40.Text = "단양우씨열락당종중";
+            this.xrLabel40.Text = "열락당 종중";
             // 
             // xrLabel39
             // 
@@ -844,7 +844,9 @@
             this.xrLabel2.Padding = new DevExpress.XtraPrinting.PaddingInfo(5, 5, 0, 0, 254F);
             this.xrLabel2.SizeF = new System.Drawing.SizeF(383.6458F, 58.42F);
             this.xrLabel2.StylePriority.UseFont = false;
-            this.xrLabel2.Text = "단양우씨열락당 종중";
+            this.xrLabel2.StylePriority.UseTextAlignment = false;
+            this.xrLabel2.Text = "열락당 종중";
+            this.xrLabel2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             // 
             // xrLabel1
             // 
@@ -1060,7 +1062,7 @@
             this.PrinterName = "관리비명세서";
             this.ReportUnit = DevExpress.XtraReports.UI.ReportUnit.TenthsOfAMillimeter;
             this.SnapGridSize = 25F;
-            this.Version = "23.1";
+            this.Version = "23.2";
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.objectDataSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
