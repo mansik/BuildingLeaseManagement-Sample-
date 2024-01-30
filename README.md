@@ -9,6 +9,7 @@
 * Git
 * Dapper
 * DevExpress
+* SQL Query
 
 ## 다음을 학습할 수 있다.
 * C# winform의 솔루션 구성방법
