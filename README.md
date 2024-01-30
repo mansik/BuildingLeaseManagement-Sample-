@@ -2,12 +2,13 @@
 * 건물임대 관리 프로그램(Sample)
 
 * 소스파일 위치: https://github.com/mansik/BuildingLeaseManagement-Sample-.git
-* WinForm, MSSQL 2022, DevExpress(Report), Dapper, Repository 패턴, 배포파일 만들기를 학습할 수 있다.
+* WinForm, MSSQL 2022, DevExpress(Report), Dapper, Repository 패턴, 배포파일 만들기가 적용된 샘플파일
 
 ## 선행학습
 * MarkDown
 * Git
 * Dapper
+* DevExpress
 
 ## 다음을 학습할 수 있다.
 * C# winform의 솔루션 구성방법
