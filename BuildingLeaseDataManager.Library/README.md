@@ -27,10 +27,10 @@
 * SqlDbAccess:  Internal.DataAccess의 SqlDataAccess를 사용하지 않고 바로 SqlClient를 사용할때 사용
 
 ## 환경
-* Visual Studio: [ ] 2019, [x] 2022
+* Visual Studio: [x] 2022
 * 프로젝트 생성: [x] .Net Framework, [ ] .Net WinForm(windows form)
 * Package 
-  * [ ] DevExpress 23.1
+  * [ ] DevExpress 23.2
 * NuGet
   * [x] Dapper
   * [x] System.Data.SqlClient 
