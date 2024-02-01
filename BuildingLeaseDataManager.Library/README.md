@@ -10,13 +10,13 @@
 	* https://www.learndapper.com/
 	* https://dappertutorial.net/dapper
 
-
+## 솔루션 구조
 > 아래 SqlDbAccess보단 DataAccess와 Internal.DataAccess의 SqlDataAccess를 사용하는 것이 편리하다.
 > `현재 프로젝트는 Internal.DataAccess의 DBConnection, Models, SqlDbAccess를 사용하였음.`
 
-* DataAccess: Internal.DataAccess의 SqlDataAccess를 사용할 때 여기서 작성
+* DataAccess(사용안함): Internal.DataAccess의 SqlDataAccess를 사용할 때 여기서 작성
 
-* Internal.DataAccess의 SqlDataAccess
+* Internal.DataAccess의 SqlDataAccess(사용안함)
   * SqlDataAccess에서는 SqlClient를 직접 작업하며,
   * DataAccess의 SqlDataAccessSample에서는 DB가 어떤 종류인지 몰라도 된다는 장점이 있다.
 

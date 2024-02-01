@@ -9,7 +9,7 @@
 * Setup 후 환경설정 파일 위치:  % AppData %\Roaming 위치임. 
 	* C:\Users\사용자명\AppData\Roaming\프로젝트명\프로젝트명.config
 
-## 폴더 구조
+## 솔루션 구조
 * Repoort: Devexpress Report
 * Resources: 
 * UI
