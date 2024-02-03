@@ -2,7 +2,7 @@
 
 # LoadModuleAsync()를 통해서 사용자 폼(UserControl)를 추가 및 layoutcontrol 사용한 경우 
 * 사용자 폼에서 컨트롤 숨길 경우 컨트롤를 감싸고 있는 layoutControlItem의 Visibility 속성을 사용한다.
-  * ex) layoutControlItem3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
+    * ex) layoutControlItem3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
 
 # Form BackgroundImageLayout = Stretch로 해야 DefaultAppFont의 폰트크기가 변경하면 이미지도 변경된다.(LoginForm에 적용)
 

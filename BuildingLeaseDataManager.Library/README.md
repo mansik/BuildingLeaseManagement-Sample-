@@ -5,10 +5,10 @@
 
 * 쿼리는 프로시저를 사용. 
 * DB 연동은 Dapper를 사용(ADO.NET보다 사용편리)하여 Repository 패턴을 적용함.
-	* 사용방법
-	* https://github.com/DapperLib/Dapper Readme
-	* https://www.learndapper.com/
-	* https://dappertutorial.net/dapper
+  * 사용방법
+    * https://github.com/DapperLib/Dapper Readme
+    * https://www.learndapper.com/
+    * https://dappertutorial.net/dapper
 
 ## 솔루션 구조
 > 아래 SqlDbAccess보단 DataAccess와 Internal.DataAccess의 SqlDataAccess를 사용하는 것이 편리하다.
@@ -26,13 +26,12 @@
 
 * SqlDbAccess:  Internal.DataAccess의 SqlDataAccess를 사용하지 않고 바로 SqlClient를 사용할때 사용
 
-## 환경
-* Visual Studio: [x] 2022
-* 프로젝트 생성: [x] .Net Framework, [ ] .Net WinForm(windows form)
-* Package 
-  * [ ] DevExpress 23.2
+## Environment
+* IDE: Visual Studio 2022
+* Language: C#
+* Applied Project Template: .NET Framework 4.8.1
+  * 클래스 라이브러리(.NET Framework)
 * NuGet
-  * [x] Dapper
-  * [x] System.Data.SqlClient 
-
-## 작업
+  * Dapper
+* Third Party Libraries  
+* DataBase: MS SQL 2022

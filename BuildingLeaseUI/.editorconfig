@@ -1,4 +1,6 @@
 ﻿root = true
 
+[*.{md,txt}]
+charset = utf-8-dom
 [*]
-charset = utf-8
+charset = utf-8-dom

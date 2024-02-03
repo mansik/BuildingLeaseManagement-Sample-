@@ -4,16 +4,17 @@
 * 소스파일 위치: https://github.com/mansik/BuildingLeaseManagement-Sample-.git
 * C#, WinForm, MSSQL 2022, DevExpress(Report), Dapper, Repository 패턴, 배포파일 만들기가 적용된 샘플파일
 
-## 환경
-* Visual Studio: [x] 2022
-* 프로젝트 생성: [x] .Net Framework, [ ] .Net WinForm(windows form)
-* Package 
-    * [x] DevExpress 23.2
-* NuGet
-    * [x] Dapper
-    * [x] System.Data.SqlClient
+## Environment
+* IDE: Visual Studio 2022
+* Language: C#
+* Applied Project Template: .NET Framework 4.8.1
+    * DevExpress v23.2 Winforms App Template Gallery - Fluent Design Application(.Net Framework)  
+* NuGet  
+    * Dapper
+* Third Party Libraries
+    * DevExpress 23.2
 * 메뉴 -> 확장 -> Microsoft Visual Studio Installer Project 2022 설치
-* DATABASE: MS SQL SERVER 2022
+* DataBase: MS SQL 2022
 
 ## 사전 지식
 * MarkDown
