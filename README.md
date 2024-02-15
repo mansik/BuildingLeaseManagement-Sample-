@@ -1,7 +1,7 @@
 ﻿# 프로젝트 명칭
 * 건물임대 관리 프로그램(Sample)
 
-* 소스파일 위치: https://github.com/mansik/BuildingLeaseManagement-Sample-.git
+## About
 * C#, WinForm, MSSQL 2022, DevExpress(Report), Dapper, Repository 패턴, 배포파일 만들기가 적용된 샘플파일
 
 ## Environment
