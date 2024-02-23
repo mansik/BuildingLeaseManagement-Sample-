@@ -151,6 +151,17 @@ namespace BuildingLeaseUI.UI.Modules
 
         void LoadDataGridView(int? findId = null)
         {
+            if (Convert.ToDateTime(searchFromDateEdit.EditValue).Date < Convert.ToDateTime("2024-01-01").Date
+                && Convert.ToDateTime(searchToDateEdit.EditValue).Date > Convert.ToDateTime("2023-12-31").Date)
+            {
+                XtraMessageBox.Show("시작일자가 2024-01-01 이전일 경우 종료일자도 2024-01-01 이전으로 하여야 합니다." + Environment.NewLine +
+                    "2024-01-01 이전과 이후의 이월금 및 수입금 합계, 차액 계산을 위함.", "확인");
+                return;
+            }
+
+            // 이월금 계산: 2024-01-01년부터 사용시 2024-01-01이전에 입력된 "전년도 이월금(AccountCodeId: 5, 9)"은 이월금 계산에 포함하며, 수입액은 제외한다.
+            // 입금액 계산: 2024-01-01이전에 입력된 수입은 입금액에서 제외요청 -> 프로그램상 안되어서 -> 조회기간을 선택할 때 2024-01-01 전과 후로 선택하도록 함.
+
             // 이월금
             _previousAmount = _cashBookRepository.GetPreviousAmountByDate(Convert.ToDateTime(searchFromDateEdit.EditValue));
 

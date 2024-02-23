@@ -244,18 +244,19 @@ namespace BuildingLeaseUI.UI.Modules
             // 
             this.withdrawalBankBookLookUpEdit.Location = new System.Drawing.Point(259, 84);
             this.withdrawalBankBookLookUpEdit.Name = "withdrawalBankBookLookUpEdit";
+            this.withdrawalBankBookLookUpEdit.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
             this.withdrawalBankBookLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.withdrawalBankBookLookUpEdit.Properties.NullText = "";
             this.withdrawalBankBookLookUpEdit.Properties.ShowFooter = false;
             this.withdrawalBankBookLookUpEdit.Properties.ShowHeader = false;
-            this.withdrawalBankBookLookUpEdit.Size = new System.Drawing.Size(52, 24);
+            this.withdrawalBankBookLookUpEdit.Size = new System.Drawing.Size(64, 24);
             this.withdrawalBankBookLookUpEdit.StyleController = this.layoutControl1;
             this.withdrawalBankBookLookUpEdit.TabIndex = 1;
             // 
             // withdrawalAccountCodeLookUpEdit
             // 
-            this.withdrawalAccountCodeLookUpEdit.Location = new System.Drawing.Point(379, 84);
+            this.withdrawalAccountCodeLookUpEdit.Location = new System.Drawing.Point(391, 84);
             this.withdrawalAccountCodeLookUpEdit.MinimumSize = new System.Drawing.Size(70, 0);
             this.withdrawalAccountCodeLookUpEdit.Name = "withdrawalAccountCodeLookUpEdit";
             this.withdrawalAccountCodeLookUpEdit.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
@@ -267,7 +268,7 @@ namespace BuildingLeaseUI.UI.Modules
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("AccountName", "목", 40, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("InOutgoings", "수입/지출", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
             this.withdrawalAccountCodeLookUpEdit.Properties.NullText = "";
-            this.withdrawalAccountCodeLookUpEdit.Size = new System.Drawing.Size(88, 24);
+            this.withdrawalAccountCodeLookUpEdit.Size = new System.Drawing.Size(97, 24);
             this.withdrawalAccountCodeLookUpEdit.StyleController = this.layoutControl1;
             this.withdrawalAccountCodeLookUpEdit.TabIndex = 5;
             // 
@@ -376,6 +377,8 @@ namespace BuildingLeaseUI.UI.Modules
             this.gridColumn2.DisplayFormat.FormatType = DevExpress.Utils.FormatType.DateTime;
             this.gridColumn2.FieldName = "TransactionDate";
             this.gridColumn2.Name = "gridColumn2";
+            this.gridColumn2.Summary.AddRange(new DevExpress.XtraGrid.GridSummaryItem[] {
+            new DevExpress.XtraGrid.GridColumnSummaryItem(DevExpress.Data.SummaryItemType.Count, "TransactionDate", "Count = {0:n0}")});
             this.gridColumn2.Visible = true;
             this.gridColumn2.VisibleIndex = 0;
             this.gridColumn2.Width = 108;
@@ -517,7 +520,7 @@ namespace BuildingLeaseUI.UI.Modules
             // 
             // depositAccountCodeLookUpEdit
             // 
-            this.depositAccountCodeLookUpEdit.Location = new System.Drawing.Point(612, 84);
+            this.depositAccountCodeLookUpEdit.Location = new System.Drawing.Point(607, 84);
             this.depositAccountCodeLookUpEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.depositAccountCodeLookUpEdit.MinimumSize = new System.Drawing.Size(70, 0);
             this.depositAccountCodeLookUpEdit.Name = "depositAccountCodeLookUpEdit";
@@ -530,13 +533,13 @@ namespace BuildingLeaseUI.UI.Modules
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("AccountName", "목", 40, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("InOutgoings", "수입/지출", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
             this.depositAccountCodeLookUpEdit.Properties.NullText = "";
-            this.depositAccountCodeLookUpEdit.Size = new System.Drawing.Size(88, 24);
+            this.depositAccountCodeLookUpEdit.Size = new System.Drawing.Size(97, 24);
             this.depositAccountCodeLookUpEdit.StyleController = this.layoutControl1;
             this.depositAccountCodeLookUpEdit.TabIndex = 11;
             // 
             // depositLesseeLookUpEdit
             // 
-            this.depositLesseeLookUpEdit.Location = new System.Drawing.Point(378, 84);
+            this.depositLesseeLookUpEdit.Location = new System.Drawing.Point(391, 84);
             this.depositLesseeLookUpEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.depositLesseeLookUpEdit.Name = "depositLesseeLookUpEdit";
             this.depositLesseeLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -545,7 +548,7 @@ namespace BuildingLeaseUI.UI.Modules
             this.depositLesseeLookUpEdit.Properties.ShowFooter = false;
             this.depositLesseeLookUpEdit.Properties.ShowHeader = false;
             this.depositLesseeLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.depositLesseeLookUpEdit.Size = new System.Drawing.Size(166, 24);
+            this.depositLesseeLookUpEdit.Size = new System.Drawing.Size(148, 24);
             this.depositLesseeLookUpEdit.StyleController = this.layoutControl1;
             this.depositLesseeLookUpEdit.TabIndex = 10;
             // 
@@ -594,10 +597,10 @@ namespace BuildingLeaseUI.UI.Modules
             // withdrawalTransactionDetailsTextEdit
             // 
             this.withdrawalTransactionDetailsTextEdit.EditValue = "";
-            this.withdrawalTransactionDetailsTextEdit.Location = new System.Drawing.Point(535, 84);
+            this.withdrawalTransactionDetailsTextEdit.Location = new System.Drawing.Point(556, 84);
             this.withdrawalTransactionDetailsTextEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.withdrawalTransactionDetailsTextEdit.Name = "withdrawalTransactionDetailsTextEdit";
-            this.withdrawalTransactionDetailsTextEdit.Size = new System.Drawing.Size(141, 24);
+            this.withdrawalTransactionDetailsTextEdit.Size = new System.Drawing.Size(120, 24);
             this.withdrawalTransactionDetailsTextEdit.StyleController = this.layoutControl1;
             this.withdrawalTransactionDetailsTextEdit.TabIndex = 2;
             // 
@@ -635,7 +638,7 @@ namespace BuildingLeaseUI.UI.Modules
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.depositTransactionDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.depositTransactionDateEdit.Size = new System.Drawing.Size(89, 24);
+            this.depositTransactionDateEdit.Size = new System.Drawing.Size(91, 24);
             this.depositTransactionDateEdit.StyleController = this.layoutControl1;
             this.depositTransactionDateEdit.TabIndex = 8;
             // 
@@ -690,20 +693,21 @@ namespace BuildingLeaseUI.UI.Modules
             // 
             // depositTransactionDetailsTextEdit
             // 
-            this.depositTransactionDetailsTextEdit.Location = new System.Drawing.Point(768, 84);
+            this.depositTransactionDetailsTextEdit.Location = new System.Drawing.Point(772, 84);
             this.depositTransactionDetailsTextEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.depositTransactionDetailsTextEdit.MinimumSize = new System.Drawing.Size(80, 0);
             this.depositTransactionDetailsTextEdit.Name = "depositTransactionDetailsTextEdit";
-            this.depositTransactionDetailsTextEdit.Size = new System.Drawing.Size(123, 24);
+            this.depositTransactionDetailsTextEdit.Size = new System.Drawing.Size(119, 24);
             this.depositTransactionDetailsTextEdit.StyleController = this.layoutControl1;
             this.depositTransactionDetailsTextEdit.TabIndex = 12;
             this.depositTransactionDetailsTextEdit.ToolTip = "예) 1월 임대료";
             // 
             // depositBankBookLookUpEdit
             // 
-            this.depositBankBookLookUpEdit.Location = new System.Drawing.Point(257, 84);
+            this.depositBankBookLookUpEdit.Location = new System.Drawing.Point(259, 84);
             this.depositBankBookLookUpEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.depositBankBookLookUpEdit.Name = "depositBankBookLookUpEdit";
+            this.depositBankBookLookUpEdit.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
             this.depositBankBookLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.depositBankBookLookUpEdit.Properties.NullText = "";
@@ -711,7 +715,7 @@ namespace BuildingLeaseUI.UI.Modules
             this.depositBankBookLookUpEdit.Properties.ShowFooter = false;
             this.depositBankBookLookUpEdit.Properties.ShowHeader = false;
             this.depositBankBookLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.depositBankBookLookUpEdit.Size = new System.Drawing.Size(53, 24);
+            this.depositBankBookLookUpEdit.Size = new System.Drawing.Size(64, 24);
             this.depositBankBookLookUpEdit.StyleController = this.layoutControl1;
             this.depositBankBookLookUpEdit.TabIndex = 9;
             // 
@@ -777,7 +781,7 @@ namespace BuildingLeaseUI.UI.Modules
             // 
             // lossLesseeLookUpEdit
             // 
-            this.lossLesseeLookUpEdit.Location = new System.Drawing.Point(257, 84);
+            this.lossLesseeLookUpEdit.Location = new System.Drawing.Point(259, 84);
             this.lossLesseeLookUpEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lossLesseeLookUpEdit.Name = "lossLesseeLookUpEdit";
             this.lossLesseeLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
@@ -786,17 +790,17 @@ namespace BuildingLeaseUI.UI.Modules
             this.lossLesseeLookUpEdit.Properties.ShowFooter = false;
             this.lossLesseeLookUpEdit.Properties.ShowHeader = false;
             this.lossLesseeLookUpEdit.Properties.TextEditStyle = DevExpress.XtraEditors.Controls.TextEditStyles.Standard;
-            this.lossLesseeLookUpEdit.Size = new System.Drawing.Size(168, 24);
+            this.lossLesseeLookUpEdit.Size = new System.Drawing.Size(166, 24);
             this.lossLesseeLookUpEdit.StyleController = this.layoutControl1;
             this.lossLesseeLookUpEdit.TabIndex = 10;
             // 
             // lossTransactionDetailsTextEdit
             // 
-            this.lossTransactionDetailsTextEdit.Location = new System.Drawing.Point(653, 84);
+            this.lossTransactionDetailsTextEdit.Location = new System.Drawing.Point(658, 84);
             this.lossTransactionDetailsTextEdit.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.lossTransactionDetailsTextEdit.MinimumSize = new System.Drawing.Size(80, 0);
             this.lossTransactionDetailsTextEdit.Name = "lossTransactionDetailsTextEdit";
-            this.lossTransactionDetailsTextEdit.Size = new System.Drawing.Size(263, 24);
+            this.lossTransactionDetailsTextEdit.Size = new System.Drawing.Size(258, 24);
             this.lossTransactionDetailsTextEdit.StyleController = this.layoutControl1;
             this.lossTransactionDetailsTextEdit.TabIndex = 12;
             this.lossTransactionDetailsTextEdit.ToolTip = "예) 1월 임대료";
@@ -811,7 +815,7 @@ namespace BuildingLeaseUI.UI.Modules
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.lossTransactionDateEdit.Properties.CalendarTimeProperties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
-            this.lossTransactionDateEdit.Size = new System.Drawing.Size(89, 24);
+            this.lossTransactionDateEdit.Size = new System.Drawing.Size(91, 24);
             this.lossTransactionDateEdit.StyleController = this.layoutControl1;
             this.lossTransactionDateEdit.TabIndex = 8;
             // 
@@ -830,7 +834,7 @@ namespace BuildingLeaseUI.UI.Modules
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("AccountName", "목", 40, DevExpress.Utils.FormatType.None, "", true, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default),
             new DevExpress.XtraEditors.Controls.LookUpColumnInfo("InOutgoings", "수입/지출", 20, DevExpress.Utils.FormatType.None, "", false, DevExpress.Utils.HorzAlignment.Default, DevExpress.Data.ColumnSortOrder.None, DevExpress.Utils.DefaultBoolean.Default)});
             this.lossAccountCodeLookUpEdit.Properties.NullText = "";
-            this.lossAccountCodeLookUpEdit.Size = new System.Drawing.Size(92, 24);
+            this.lossAccountCodeLookUpEdit.Size = new System.Drawing.Size(97, 24);
             this.lossAccountCodeLookUpEdit.StyleController = this.layoutControl1;
             this.lossAccountCodeLookUpEdit.TabIndex = 11;
             // 
@@ -869,7 +873,7 @@ namespace BuildingLeaseUI.UI.Modules
             this.InputTab.AppearanceTabPage.HeaderActive.Options.UseFont = true;
             this.InputTab.Location = new System.Drawing.Point(0, 0);
             this.InputTab.Name = "InputTab";
-            this.InputTab.SelectedTabPage = this.lossLayoutControlGroup;
+            this.InputTab.SelectedTabPage = this.depositLayoutControlGroup;
             this.InputTab.Size = new System.Drawing.Size(1216, 79);
             this.InputTab.TabPages.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.depositLayoutControlGroup,
@@ -914,30 +918,27 @@ namespace BuildingLeaseUI.UI.Modules
             // layoutControlItem16
             // 
             this.layoutControlItem16.Control = this.depositLesseeLookUpEdit;
-            this.layoutControlItem16.Location = new System.Drawing.Point(278, 0);
+            this.layoutControlItem16.Location = new System.Drawing.Point(291, 0);
             this.layoutControlItem16.Name = "layoutControlItem16";
-            this.layoutControlItem16.Size = new System.Drawing.Size(234, 28);
+            this.layoutControlItem16.Size = new System.Drawing.Size(216, 28);
             this.layoutControlItem16.Text = "임차인";
             this.layoutControlItem16.TextSize = new System.Drawing.Size(52, 17);
             // 
             // layoutControlItem5
             // 
             this.layoutControlItem5.Control = this.depositBankBookLookUpEdit;
-            this.layoutControlItem5.Location = new System.Drawing.Point(157, 0);
-            this.layoutControlItem5.MaxSize = new System.Drawing.Size(121, 28);
-            this.layoutControlItem5.MinSize = new System.Drawing.Size(121, 28);
+            this.layoutControlItem5.Location = new System.Drawing.Point(159, 0);
             this.layoutControlItem5.Name = "layoutControlItem5";
-            this.layoutControlItem5.Size = new System.Drawing.Size(121, 28);
-            this.layoutControlItem5.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem5.Size = new System.Drawing.Size(132, 28);
             this.layoutControlItem5.Text = "통장";
             this.layoutControlItem5.TextSize = new System.Drawing.Size(52, 17);
             // 
             // layoutControlItem2
             // 
             this.layoutControlItem2.Control = this.depositTransactionDetailsTextEdit;
-            this.layoutControlItem2.Location = new System.Drawing.Point(668, 0);
+            this.layoutControlItem2.Location = new System.Drawing.Point(672, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(191, 28);
+            this.layoutControlItem2.Size = new System.Drawing.Size(187, 28);
             this.layoutControlItem2.Text = "내용";
             this.layoutControlItem2.TextSize = new System.Drawing.Size(52, 17);
             // 
@@ -946,16 +947,16 @@ namespace BuildingLeaseUI.UI.Modules
             this.layoutControlItem1.Control = this.depositTransactionDateEdit;
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(157, 28);
+            this.layoutControlItem1.Size = new System.Drawing.Size(159, 28);
             this.layoutControlItem1.Text = "거래일자";
             this.layoutControlItem1.TextSize = new System.Drawing.Size(52, 17);
             // 
             // layoutControlItem17
             // 
             this.layoutControlItem17.Control = this.depositAccountCodeLookUpEdit;
-            this.layoutControlItem17.Location = new System.Drawing.Point(512, 0);
+            this.layoutControlItem17.Location = new System.Drawing.Point(507, 0);
             this.layoutControlItem17.Name = "layoutControlItem17";
-            this.layoutControlItem17.Size = new System.Drawing.Size(156, 28);
+            this.layoutControlItem17.Size = new System.Drawing.Size(165, 28);
             this.layoutControlItem17.Text = "계정과목";
             this.layoutControlItem17.TextSize = new System.Drawing.Size(52, 17);
             // 
@@ -980,9 +981,9 @@ namespace BuildingLeaseUI.UI.Modules
             // layoutControlItem9
             // 
             this.layoutControlItem9.Control = this.withdrawalTransactionDetailsTextEdit;
-            this.layoutControlItem9.Location = new System.Drawing.Point(435, 0);
+            this.layoutControlItem9.Location = new System.Drawing.Point(456, 0);
             this.layoutControlItem9.Name = "layoutControlItem9";
-            this.layoutControlItem9.Size = new System.Drawing.Size(209, 28);
+            this.layoutControlItem9.Size = new System.Drawing.Size(188, 28);
             this.layoutControlItem9.Text = "내용";
             this.layoutControlItem9.TextSize = new System.Drawing.Size(52, 17);
             // 
@@ -1038,20 +1039,17 @@ namespace BuildingLeaseUI.UI.Modules
             // 
             this.layoutControlItem25.Control = this.withdrawalBankBookLookUpEdit;
             this.layoutControlItem25.Location = new System.Drawing.Point(159, 0);
-            this.layoutControlItem25.MaxSize = new System.Drawing.Size(120, 28);
-            this.layoutControlItem25.MinSize = new System.Drawing.Size(120, 28);
             this.layoutControlItem25.Name = "layoutControlItem25";
-            this.layoutControlItem25.Size = new System.Drawing.Size(120, 28);
-            this.layoutControlItem25.SizeConstraintsType = DevExpress.XtraLayout.SizeConstraintsType.Custom;
+            this.layoutControlItem25.Size = new System.Drawing.Size(132, 28);
             this.layoutControlItem25.Text = "통장";
             this.layoutControlItem25.TextSize = new System.Drawing.Size(52, 17);
             // 
             // layoutControlItem19
             // 
             this.layoutControlItem19.Control = this.withdrawalAccountCodeLookUpEdit;
-            this.layoutControlItem19.Location = new System.Drawing.Point(279, 0);
+            this.layoutControlItem19.Location = new System.Drawing.Point(291, 0);
             this.layoutControlItem19.Name = "layoutControlItem19";
-            this.layoutControlItem19.Size = new System.Drawing.Size(156, 28);
+            this.layoutControlItem19.Size = new System.Drawing.Size(165, 28);
             this.layoutControlItem19.Text = "계정과목";
             this.layoutControlItem19.TextSize = new System.Drawing.Size(52, 17);
             // 
@@ -1076,9 +1074,9 @@ namespace BuildingLeaseUI.UI.Modules
             this.layoutControlItem29.Control = this.lossLesseeLookUpEdit;
             this.layoutControlItem29.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.layoutControlItem29.CustomizationFormText = "임차인";
-            this.layoutControlItem29.Location = new System.Drawing.Point(157, 0);
+            this.layoutControlItem29.Location = new System.Drawing.Point(159, 0);
             this.layoutControlItem29.Name = "layoutControlItem29";
-            this.layoutControlItem29.Size = new System.Drawing.Size(236, 28);
+            this.layoutControlItem29.Size = new System.Drawing.Size(234, 28);
             this.layoutControlItem29.Text = "임차인";
             this.layoutControlItem29.TextSize = new System.Drawing.Size(52, 17);
             // 
@@ -1089,7 +1087,7 @@ namespace BuildingLeaseUI.UI.Modules
             this.layoutControlItem33.CustomizationFormText = "계정과목";
             this.layoutControlItem33.Location = new System.Drawing.Point(393, 0);
             this.layoutControlItem33.Name = "layoutControlItem33";
-            this.layoutControlItem33.Size = new System.Drawing.Size(160, 28);
+            this.layoutControlItem33.Size = new System.Drawing.Size(165, 28);
             this.layoutControlItem33.Text = "계정과목";
             this.layoutControlItem33.TextSize = new System.Drawing.Size(52, 17);
             // 
@@ -1109,9 +1107,9 @@ namespace BuildingLeaseUI.UI.Modules
             this.layoutControlItem31.Control = this.lossTransactionDetailsTextEdit;
             this.layoutControlItem31.ControlAlignment = System.Drawing.ContentAlignment.TopLeft;
             this.layoutControlItem31.CustomizationFormText = "내용";
-            this.layoutControlItem31.Location = new System.Drawing.Point(553, 0);
+            this.layoutControlItem31.Location = new System.Drawing.Point(558, 0);
             this.layoutControlItem31.Name = "layoutControlItem31";
-            this.layoutControlItem31.Size = new System.Drawing.Size(331, 28);
+            this.layoutControlItem31.Size = new System.Drawing.Size(326, 28);
             this.layoutControlItem31.Text = "내용";
             this.layoutControlItem31.TextSize = new System.Drawing.Size(52, 17);
             // 
@@ -1122,7 +1120,7 @@ namespace BuildingLeaseUI.UI.Modules
             this.layoutControlItem32.CustomizationFormText = "거래일자";
             this.layoutControlItem32.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem32.Name = "layoutControlItem32";
-            this.layoutControlItem32.Size = new System.Drawing.Size(157, 28);
+            this.layoutControlItem32.Size = new System.Drawing.Size(159, 28);
             this.layoutControlItem32.Text = "거래일자";
             this.layoutControlItem32.TextSize = new System.Drawing.Size(52, 17);
             // 

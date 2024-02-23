@@ -178,6 +178,7 @@ namespace BuildingLeaseUI.UI.Modules
             // 
             this.bankBookLookUpEdit.Location = new System.Drawing.Point(719, 65);
             this.bankBookLookUpEdit.Name = "bankBookLookUpEdit";
+            this.bankBookLookUpEdit.Properties.BestFitMode = DevExpress.XtraEditors.Controls.BestFitMode.BestFitResizePopup;
             this.bankBookLookUpEdit.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton(DevExpress.XtraEditors.Controls.ButtonPredefines.Combo)});
             this.bankBookLookUpEdit.Properties.NullText = "";
