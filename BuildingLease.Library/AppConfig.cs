@@ -10,6 +10,8 @@ namespace BuildingLease.Library
         public static string AppPath => AppDomain.CurrentDomain.BaseDirectory;
         public static string WriteLogFlag => GetAppConfig("WriteLogFlag");
         public static string DbPassword { get; set; }
+        public static string ProjectName => System.Reflection.Assembly.GetEntryAssembly().GetName().Name;
+        public static string ConfigPath => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), ProjectName);
 
         /// <summary>
         /// C:\Users\사용자명\AppData\Local\프로젝트명\프로젝트명.config
@@ -28,11 +30,11 @@ namespace BuildingLease.Library
             // Setup Project에서 User's Application Data Folder가 % AppData %\Roaming 위치임
             // % AppData %\Local 위치: Environment.SpecialFolder.LocalApplicationData
             // % AppData %\Roaming 위치: Environment.SpecialFolder.ApplicationData            
-            var projectName = System.Reflection.Assembly.GetEntryAssembly().GetName().Name;
+            //var projectName = System.Reflection.Assembly.GetEntryAssembly().GetName().Name;
             //var companyName = Application.CompanyName;
             //저장위치 - C:\Users\사용자명\AppData\Roaming\프로젝트명\프로젝트명.config
-            var configPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), projectName);
-            var configFile = System.IO.Path.Combine(configPath, projectName + ".config");
+            //var configPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), projectName);
+            var configFile = System.IO.Path.Combine(ConfigPath, ProjectName + ".config");
 
             if (string.IsNullOrWhiteSpace(configFile) || !File.Exists(configFile))
             {
@@ -79,11 +81,11 @@ namespace BuildingLease.Library
                     _ = new InputBox().ShowDialog();
                     if (!string.IsNullOrEmpty(DbPassword))
                     {
-                        if (DbPassword.Length > 0)
+                        if (DbPassword.StartsWith("sa@"))
                         {
-                            SetAppConfig("DatabasePassword", Encrypt.EncryptAES(DbPassword));
+                            SetAppConfig("DatabasePassword", Encrypt.EncryptAES(DbPassword.Substring(3)));
                             ConfigurationManager.RefreshSection(config.AppSettings.SectionInformation.Name);
-                            connnectionString = string.Format(connectionString, DbPassword);
+                            connnectionString = string.Format(connectionString, DbPassword.Substring(3));
                         }
                     }
                 }

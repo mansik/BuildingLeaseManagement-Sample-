@@ -34,7 +34,17 @@ namespace BuildingLease.Library
 
     public class Logger
     {
-        private static readonly string LogFilePath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Log");
+        /// <summary>
+        /// 실행파일을 Program Files 영역에 설치하게 되면 
+        /// 관리자 권한을 요구하기 때문에 마음대로 썼다 지웠다 하기가 어렵다. 
+        /// => 그래서 환경설정 파일이 있는 % AppData %\Roaming에 로그파일을 저장한다.
+        /// % AppData %\Roaming 위치: Environment.SpecialFolder.ApplicationData
+        /// </summary>
+
+        //public static string ProjectName => System.Reflection.Assembly.GetEntryAssembly().GetName().Name;
+        //public static string ConfigPath => Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), ProjectName);
+        //private static readonly string LogFilePath = Path.Combine(ConfigPath, "Log");
+        private static readonly string LogFilePath = Path.Combine(AppConfig.ConfigPath, "Log");
         /// <summary>
         /// 로그를 한번에 모아서 저장하기 위해서 Queue 사용
         /// </summary>
@@ -107,7 +117,8 @@ namespace BuildingLease.Library
 
         /// <summary>
         /// deleteDays일 이전 Log 파일 삭제
-        /// orverDays = 0 이면 30일전 파일만 삭제
+        /// deleteDaysAgo = 0 이면 30일전 파일만 삭제
+        /// 프로그램 종료시 호출할 것.
         /// </summary>
         /// <param name="deleteDaysAgo">보존기간</param>
         public void DeleteLog(int deleteDaysAgo = 10)

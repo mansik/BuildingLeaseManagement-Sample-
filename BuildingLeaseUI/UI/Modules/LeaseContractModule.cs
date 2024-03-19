@@ -80,12 +80,12 @@ namespace BuildingLeaseUI.UI.Modules
             floorLookUpEdit.EditValue = null;
             roomLookUpEdit.EditValue = null;
             depositTextEdit.EditValue = 0;
-            monthlyRentTextEdit.EditValue = 0;
-            monthlyRentVATTextEdit.EditValue = 0;
-            monthlyRentTotalEdit.EditValue = 0;
-            maintenanceFeeTextEdit.EditValue = 0;
-            maintenanceFeeVATTextEdit.EditValue = 0;
-            maintenanceFeeTotalTextEdit.EditValue = 0;
+            monthlyRentTextEdit.EditValue = 0m;
+            monthlyRentVATTextEdit.EditValue = 0m;
+            monthlyRentTotalEdit.EditValue = 0m;
+            maintenanceFeeTextEdit.EditValue = 0m;
+            maintenanceFeeVATTextEdit.EditValue = 0m;
+            maintenanceFeeTotalTextEdit.EditValue = 0m;
             notesTextEdit.Text = string.Empty;
         }
 

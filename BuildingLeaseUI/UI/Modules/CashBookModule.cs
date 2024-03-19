@@ -21,7 +21,7 @@ namespace BuildingLeaseUI.UI.Modules
         /// <summary>
         /// 이월금
         /// </summary>
-        private decimal _previousAmount = 0;
+        private decimal _previousAmount = 0m;
 
         public CashBookModule()
         {
@@ -53,7 +53,7 @@ namespace BuildingLeaseUI.UI.Modules
             depositLesseeLookUpEdit.EditValue = null;
             depositTransactionDetailsTextEdit.Text = string.Empty;
             depositAccountCodeLookUpEdit.EditValue = null;
-            depositAmountTextEdit.EditValue = 0;
+            depositAmountTextEdit.EditValue = 0m;
             depositNotesTextEdit.Text = string.Empty;
             // 출금
             withdrawalTransactionDateEdit.EditValue = DateTime.Today;
@@ -62,14 +62,14 @@ namespace BuildingLeaseUI.UI.Modules
             withdrawalCreditorTextEdit.Text = string.Empty;
             withdrawalExpenseNumberSpinEdit.EditValue = expenseNumber;
             withdrawalAccountCodeLookUpEdit.EditValue = null;
-            withdrawalAmountTextEdit.EditValue = 0;
+            withdrawalAmountTextEdit.EditValue = 0m;
             withdrawalNotesTextEdit.EditValue = string.Empty;
             // 결손액
             lossTransactionDateEdit.EditValue = DateTime.Today;
             lossLesseeLookUpEdit.EditValue = null;
             lossTransactionDetailsTextEdit.Text = string.Empty;
             lossAccountCodeLookUpEdit.EditValue = null;
-            lossAmountTextEdit.EditValue = 0;
+            lossAmountTextEdit.EditValue = 0m;
             lossNotesTextEdit.Text = string.Empty;
         }
 
@@ -747,9 +747,9 @@ namespace BuildingLeaseUI.UI.Modules
                         case CustomSummaryProcess.Calculate:
                             break;
                         case CustomSummaryProcess.Finalize:
-                            decimal sumDepositAmount = 0;
-                            decimal sumWithdrawalAmount = 0;
-                            decimal sumLossAmount = 0;
+                            decimal sumDepositAmount = 0m;
+                            decimal sumWithdrawalAmount = 0m;
+                            decimal sumLossAmount = 0m;
                             for (int rowIndex = 0; rowIndex < gridView.DataRowCount; rowIndex++)
                             {
                                 sumDepositAmount += Convert.ToDecimal(gridView.GetRowCellValue(rowIndex, gridView.Columns["DepositAmount"]));
