@@ -1,73 +1,100 @@
-ï»¿CREATE PROCEDURE [dbo].[spLeaseIncomings_GetsDisplayByFromToDate]
+CREATE PROCEDURE [dbo].[spLeaseIncomings_GetsDisplayByFromToDate]
 	@FromDate DateTime,
 	@ToDate DateTime
 AS
-BEGIN
-	with BuildingRoomCode as
-	(
-		/*ê±´ë¬¼*/
-		select room.Id as BuildingRoomCodeId, BuildingCodeId,
-			building.DisplaySeq as DisplaySeq
-		from dbo.[BuildingRoomCode] room
-		left join dbo.[BuildingCode] building
-			on room.BuildingCodeId = building.Id
-	)
-	,
-	Invoice
-	as
-	(
-		/*ì²­êµ¬ì•¡*/
-		select datetrunc(month, InvoiceDate) as InvoiceDate, BuildingRoomCodeId, LesseeId,
-		sum(LineTotal) as InvoiceAmount
-		from dbo.[Invoice]
-		where InvoiceDate >= @FromDate
-		and InvoiceDate <= @ToDate
-		group by datetrunc(month, InvoiceDate),BuildingRoomCodeId, LesseeId
-	)	
-	,
-	Incomings
-	as
-	(
-		/*ìˆ˜ìž…ì•¡*/
-		select datetrunc(month, TransactionDate) as TransactionDate, LesseeId,
-		sum(DepositAmount) as IncomingsAmount
-		from dbo.[CashBook]
-		where TransactionDate >= @FromDate 
-		and TransactionDate <= @ToDate
-		and DelFlag = 0
-		and InOutgoings = 0 
-		group by datetrunc(month, TransactionDate), LesseeId
-	)	
-	,
-	Loss
-	as
-	(
-		/*ê²°ì†ì•¡*/
-		select datetrunc(month, TransactionDate) as TransactionDate, LesseeId,
-		sum(LossAmount) as LossAmount
-		from dbo.[CashBook]
-		where TransactionDate >= @FromDate 
-		and TransactionDate <= @ToDate
-		and DelFlag = 0
-		and InOutgoings = 2 
-		group by datetrunc(month, TransactionDate), LesseeId
-	)
+/*
+- ¼öÀÔ ±âÁØ
+- °è¾à Àü¿¡(Ã»±¸µ¥ÀÌÅÍ°¡ ¸¸µé¾îÁö±â Àü) ¼öÀÔÀÌ ¹ß»ý½Ã ¼öÀÔ ´©¶ôÀ» ÇØ°á
+*/
+IF (DATEDIFF(month, @FromDate, @ToDate) + 1 >= 1)
+	BEGIN
+		with wDate
+		as 
+		(
+			select top (DATEDIFF(month, @FromDate, @ToDate) + 1)
+				withDate = DATEADD(month, row_number() over(order by object_id) - 1, datetrunc(month, @FromDate))
+			from sys.all_objects
+		)
+		,
+		BuildingRoomCode as
+		(
+			/*°Ç¹°*/
+			select room.Id as BuildingRoomCodeId, BuildingCodeId,
+				building.DisplaySeq as DisplaySeq
+			from dbo.[BuildingRoomCode] room
+			left join dbo.[BuildingCode] building
+				on room.BuildingCodeId = building.Id
+		)
+		, 
+		LeaseContract
+		as
+		(
+			/*ÀÓ´ëÂ÷ °è¾à: °è¾à Àü¿¡(Ã»±¸µ¥ÀÌÅÍ°¡ ¸¸µé¾îÁö±â Àü) ¼öÀÔÀÌ ¹ß»ý½Ã ¼öÀÔ ´©¶ôÀ» ÇØ°áÇÏ±â À§ÇÔ*/
+			select distinct BuildingRoomCodeId, LesseeId
+			from dbo.[LeaseContract]
+		)
+		,
+		Invoice
+		as
+		(
+			/*Ã»±¸¾×*/
+			select datetrunc(month, InvoiceDate) as InvoiceDate, LesseeId,
+				sum(LineTotal) as InvoiceAmount
+			from dbo.[Invoice]
+			where InvoiceDate >= @FromDate
+				and InvoiceDate <= @ToDate
+			group by datetrunc(month, InvoiceDate), LesseeId
+		)	
+		,
+		Incomings
+		as
+		(
+			/*¼öÀÔ¾×*/
+			select datetrunc(month, TransactionDate) as TransactionDate, LesseeId,
+				sum(DepositAmount) as IncomingsAmount
+			from dbo.[CashBook]
+			where TransactionDate >= @FromDate 
+				and TransactionDate <= @ToDate
+				and DelFlag = 0
+				and InOutgoings = 0 
+			group by datetrunc(month, TransactionDate), LesseeId
+		)	
+		,
+		Loss
+		as
+		(
+			/*°á¼Õ¾×*/
+			select datetrunc(month, TransactionDate) as TransactionDate, LesseeId,
+				sum(LossAmount) as LossAmount
+			from dbo.[CashBook]
+			where TransactionDate >= @FromDate 
+				and TransactionDate <= @ToDate
+				and DelFlag = 0
+				and InOutgoings = 2 
+			group by datetrunc(month, TransactionDate), LesseeId
+		)
 	
 
-	select room.BuildingCodeId,	Invoice.InvoiceDate, room.DisplaySeq,
-		sum(isnull(InvoiceAmount,0)) as InvoiceAmount, /*ë‹¹ì›” ì²­êµ¬ì•¡*/
-		sum(isnull(IncomingsAmount,0)) as IncomingsAmount, /*ë‹¹ì›” ìˆ˜ìž…ì•¡*/
-		sum(isnull(LossAmount,0)) as LossAmount /*ë‹¹ì›” ê²°ì†ì•¡*/
-	from BuildingRoomCode room
-	left join Invoice
-	  on Invoice.BuildingRoomCodeId = room.BuildingRoomCodeId
-	left join Incomings
-	  on Incomings.LesseeId = Invoice.LesseeId
-	  and Incomings.TransactionDate = Invoice.InvoiceDate
-	left join Loss
-	  on Loss.LesseeId = Invoice.LesseeId
-	  and Loss.TransactionDate = Invoice.InvoiceDate
-	where Invoice.InvoiceDate is not null
-	group by room.BuildingCodeId, Invoice.InvoiceDate, room.DisplaySeq
-	order by Invoice.InvoiceDate, room.DisplaySeq;
-END
+		select withdate as InvoiceDate, room.BuildingCodeId, room.DisplaySeq,
+			sum(isnull(InvoiceAmount,0)) as InvoiceAmount, /*´ç¿ù Ã»±¸¾×*/
+			sum(isnull(IncomingsAmount,0)) as IncomingsAmount, /*´ç¿ù ¼öÀÔ¾×*/
+			sum(isnull(LossAmount,0)) as LossAmount /*´ç¿ù °á¼Õ¾×*/
+		from wDate
+		cross join BuildingRoomCode room
+		left join LeaseContract
+			on room.BuildingRoomCodeId = LeaseContract.BuildingRoomCodeId
+		left join Invoice
+			on Invoice.LesseeId = LeaseContract.LesseeId
+			and Invoice.InvoiceDate = wdate.withdate
+		left join Incomings
+			on Incomings.LesseeId = LeaseContract.LesseeId
+			and Incomings.TransactionDate = wdate.withdate
+		left join Loss
+			on Loss.LesseeId = LeaseContract.LesseeId
+			and Loss.TransactionDate = wdate.withdate
+		group by withdate, room.BuildingCodeId, room.DisplaySeq
+		order by withdate, room.DisplaySeq;
+	END
+GO
+
+

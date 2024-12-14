@@ -1,8 +1,8 @@
-CREATE PROCEDURE [dbo].[spIncomingsDetails_GetsDisplayByFromToDate]
+CREATE PROCEDURE [dbo].[spIncomingsDetails_당월만_GetsDisplayByFromToDate]
 	@SearchDate DateTime,
 	@TotalCalcByYearFlag bit
 AS
-/*당해 년도에 계약 종료된 것도 모두 조회(년초부터 모두 조회)*/
+/*중요!! 계약 종료된 것은 조회 안됨*/
 if (@TotalCalcByYearFlag = 1)
 	BEGIN
 		/*연초부터 누계 계산*/
@@ -15,15 +15,6 @@ if (@TotalCalcByYearFlag = 1)
 			from dbo.[BuildingRoomCode] room
 			left join dbo.[BuildingCode] building
 				on room.BuildingCodeId = building.Id
-		)
-		, 
-		LeaseContract
-		as
-		(
-			/*임대차 계약: 당해 년도에 계약 종료된 것도 모두 조회하기 위함(년초부터 모두 조회)*/
-			select distinct BuildingRoomCodeId, LesseeId
-			from dbo.[LeaseContract]
-			where ContractEndDate >= datetrunc(year, @SearchDate)
 		)
 		,
 		PreviousInvoice
@@ -52,7 +43,7 @@ if (@TotalCalcByYearFlag = 1)
 		Invoice
 		as
 		(
-			/*청구액*/		
+			/*청구액*/
 			select BuildingRoomCodeId, LesseeId, LineTotal as InvoiceAmount
 			from dbo.[Invoice]
 			where InvoiceDate = @SearchDate
@@ -126,7 +117,7 @@ if (@TotalCalcByYearFlag = 1)
 		)
 
 		select room.BuildingCodeId, [Floor], Room,
-			LeaseContract.LesseeId, 
+			Invoice.LesseeId, 
 			isnull(PreviousInvoiceAmount,0) - isnull(PreviousIncomingsAmount,0) as PreviousReceivableAmount, /*전월 미수금(청구액-수입액-결손액)*/
 			isnull(InvoiceAmount,0) as InvoiceAmount, /*당월 청구액*/
 			isnull(InvoiceTotalAmount,0) as InvoiceTotalAmount, /*청구액 누계*/
@@ -137,25 +128,22 @@ if (@TotalCalcByYearFlag = 1)
 			isnull(InvoiceAmount,0) - isnull(IncomingsAmount,0) - isnull(LossAmount,0) as ReceivableAmount, /*당월 미수금*/
 			isnull(PreviousInvoiceAmount,0) - isnull(PreviousIncomingsAmount,0) +  isnull(InvoiceAmount,0) - isnull(IncomingsAmount,0) - isnull(LossAmount,0) as ReceivableTotalAmount /*총 미수금*/
 		from BuildingRoomCode room
-		left join LeaseContract
-			on room.BuildingRoomCodeId = LeaseContract.BuildingRoomCodeId
 		left join Invoice
-			on Invoice.BuildingRoomCodeId = LeaseContract.BuildingRoomCodeId
-			and Invoice.LesseeId = LeaseContract.LesseeId
+			on Invoice.BuildingRoomCodeId = room.BuildingRoomCodeId
 		left join InvoiceTotal
-			on InvoiceTotal.LesseeId = LeaseContract.LesseeId
+			on InvoiceTotal.LesseeId = Invoice.LesseeId
 		left join Incomings
-			on Incomings.LesseeId = LeaseContract.LesseeId
+			on Incomings.LesseeId = Invoice.LesseeId
 		left join IncomingsTotal
-			on IncomingsTotal.LesseeId = LeaseContract.LesseeId
+			on IncomingsTotal.LesseeId = Invoice.LesseeId
 		left join Loss
-			on Loss.LesseeId = LeaseContract.LesseeId
+			on Loss.LesseeId = Invoice.LesseeId
 		left join LossTotal
-			on LossTotal.LesseeId = LeaseContract.LesseeId
+			on LossTotal.LesseeId = Invoice.LesseeId
 		left join PreviousInvoice
-			on PreviousInvoice.LesseeId = LeaseContract.LesseeId
+			on PreviousInvoice.LesseeId = Invoice.LesseeId
 		left join PreviousIncomings
-			on PreviousIncomings.LesseeId = LeaseContract.LesseeId		  
+			on PreviousIncomings.LesseeId = Invoice.LesseeId
 		order by DisplaySeq1, DisplaySeq2, room.BuildingCodeId, [Floor], Room;
 	END
 else
@@ -170,15 +158,6 @@ else
 			from dbo.[BuildingRoomCode] room
 			left join dbo.[BuildingCode] building
 			  on room.BuildingCodeId = building.Id
-		)
-		, 
-		LeaseContract
-		as
-		(
-			/*임대차 계약: 당해 년도에 계약 종료된 것도 모두 조회하기 위함(년초부터 모두 조회)*/
-			select distinct BuildingRoomCodeId, LesseeId
-			from dbo.[LeaseContract]
-			where ContractEndDate >= datetrunc(year, @SearchDate)
 		)
 		,
 		PreviousInvoice
@@ -207,7 +186,7 @@ else
 		Invoice
 		as
 		(
-			/*청구액*/		
+			/*청구액*/
 			select BuildingRoomCodeId, LesseeId, LineTotal as InvoiceAmount
 			from dbo.[Invoice]
 			where InvoiceDate = @SearchDate
@@ -278,7 +257,7 @@ else
 		)
 
 		select room.BuildingCodeId, [Floor], Room,
-			LeaseContract.LesseeId, 
+			Invoice.LesseeId, 
 			isnull(PreviousInvoiceAmount,0) - isnull(PreviousIncomingsAmount,0) as PreviousReceivableAmount, /*전월 미수금(청구액-수입액-결손액)*/
 			isnull(InvoiceAmount,0) as InvoiceAmount, /*당월 청구액*/
 			isnull(InvoiceTotalAmount,0) as InvoiceTotalAmount, /*청구액 누계*/
@@ -289,25 +268,22 @@ else
 			isnull(InvoiceAmount,0) - isnull(IncomingsAmount,0) - isnull(LossAmount,0) as ReceivableAmount, /*당월 미수금*/
 			isnull(PreviousInvoiceAmount,0) - isnull(PreviousIncomingsAmount,0) +  isnull(InvoiceAmount,0) - isnull(IncomingsAmount,0) - isnull(LossAmount,0) as ReceivableTotalAmount /*총 미수금*/
 		from BuildingRoomCode room
-		left join LeaseContract
-			on room.BuildingRoomCodeId = LeaseContract.BuildingRoomCodeId
 		left join Invoice
-			on Invoice.BuildingRoomCodeId = LeaseContract.BuildingRoomCodeId
-			and Invoice.LesseeId = LeaseContract.LesseeId
+			on Invoice.BuildingRoomCodeId = room.BuildingRoomCodeId
 		left join InvoiceTotal
-			on InvoiceTotal.LesseeId = LeaseContract.LesseeId
+			on InvoiceTotal.LesseeId = Invoice.LesseeId
 		left join Incomings
-			on Incomings.LesseeId = LeaseContract.LesseeId
+			on Incomings.LesseeId = Invoice.LesseeId
 		left join IncomingsTotal
-			on IncomingsTotal.LesseeId = LeaseContract.LesseeId
+			on IncomingsTotal.LesseeId = Invoice.LesseeId
 		left join Loss
-			on Loss.LesseeId = LeaseContract.LesseeId
+			on Loss.LesseeId = Invoice.LesseeId
 		left join LossTotal
-			on LossTotal.LesseeId = LeaseContract.LesseeId
+			on LossTotal.LesseeId = Invoice.LesseeId
 		left join PreviousInvoice
-			on PreviousInvoice.LesseeId = LeaseContract.LesseeId
+			on PreviousInvoice.LesseeId = Invoice.LesseeId
 		left join PreviousIncomings
-			on PreviousIncomings.LesseeId = LeaseContract.LesseeId
+			on PreviousIncomings.LesseeId = Invoice.LesseeId
 		order by DisplaySeq1, DisplaySeq2, room.BuildingCodeId, [Floor], Room;
 	END
 GO
