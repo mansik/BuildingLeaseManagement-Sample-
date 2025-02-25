@@ -8,11 +8,11 @@
 * IDE: Visual Studio 2022
 * Language: C#
 * Applied Project Template: .NET Framework 4.8.1
-    * DevExpress v23.2 Winforms App Template Gallery - Fluent Design Application(.Net Framework)  
+    * DevExpress v24.2 Winforms App Template Gallery - Fluent Design Application(.Net Framework)  
 * NuGet  
     * Dapper
 * Third Party Libraries
-    * DevExpress 23.2
+    * DevExpress 24.2
 * 메뉴 -> 확장 -> Microsoft Visual Studio Installer Project 2022 설치
 * DataBase: MS SQL 2022
 
