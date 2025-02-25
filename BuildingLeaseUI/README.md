@@ -20,19 +20,19 @@
 * IDE: Visual Studio 2022
 * Language: C#
 * Applied Project Template: .NET Framework 4.8.1
-	* DevExpress v23.2 Winforms App Template Gallery - Fluent Design Application(.Net Framework)  
+	* DevExpress v24.2 Winforms App Template Gallery - Fluent Design Application(.Net Framework)  
 * NuGet
 * Third Party Libraries
-	* DevExpress 23.2
+	* DevExpress 24.2
 * DataBase: MS SQL 2022
 
 ----
-* 메인폼 : DevExpress v23.2 Winforms App Template Gallery - Fluent Design Application(.Net Framework) 로 생성
+* 메인폼 : DevExpress v24.2 Winforms App Template Gallery - Fluent Design Application(.Net Framework) 로 생성
 * 로그인 화면의 [이미지](https://www.shutterstock.com/search/building?page=3)는 
   * [shutterstock.com](https://www.shutterstock.com)에서 찾았으며 
   * 편집은 [피그마](https://www.figma.com/)를 이용하여 작성하였음
 * 참조추가 : DevExpress.Tutorial library - Fluent Design Form 에서 AccordionControl로 fluentDesignFormContainer에 폼을 호출할 때 사용
-  * C:\Program Files\DevExpress 23.1\Components\Bin\Framework\DevExpress.Tutorials.v23.1.dll
+  * C:\Program Files\DevExpress 24.2\Components\Bin\Framework\DevExpress.Tutorials.v24.2.dll
 * Devexpress Project Setting 
   * font 맑은 고딕, 10 -> 9.75로 변경됨.
   * DirectX = 체크: 차트 및 그리드 속도 향상
