@@ -137,71 +137,69 @@ namespace BuildingLeaseUI
             }
         }
 
-        private void SetCurrentMenuItem(object sender)
+        private String GetCurrentMenuItem(object sender)
         {
-            this.currentMenuItem.Caption = $"{((AccordionControlElement)sender).OwnerElement?.Text} > {(sender as AccordionControlElement).Text}";
+            var element = sender as AccordionControlElement;
+            return $"{element?.OwnerElement?.Text} > {element?.Text}";
         }
 
         private async void mnuCashBook_Click(object sender, EventArgs e)
         {
-            this.currentMenuItem.Caption = $"{(sender as AccordionControlElement).Text}";
+            this.currentMenuItem.Caption = $"{(sender as AccordionControlElement)?.Text}";
             await LoadModule("CashBookModule");
         }
 
         private async void mnuLessee_Click(object sender, EventArgs e)
         {
-            //this.currentMenuItem.Caption = $"{((AccordionControlElement)sender).OwnerElement?.Text} > {(sender as AccordionControlElement).Text}";
-            SetCurrentMenuItem(sender);
+            this.currentMenuItem.Caption = GetCurrentMenuItem(sender);
             await LoadModule("LesseeModule");
         }
 
         private async void mnuLeaseContract_Click(object sender, EventArgs e)
         {
-            SetCurrentMenuItem(sender);
+            this.currentMenuItem.Caption = GetCurrentMenuItem(sender);
             await LoadModule("LeaseContractModule");
         }
 
         private async void mnuInvoiceList_Click(object sender, EventArgs e)
         {
-            SetCurrentMenuItem(sender);
+            this.currentMenuItem.Caption = GetCurrentMenuItem(sender);
             await LoadModule("InvoiceListModule");
         }
 
         private async void mnuMaintenanceFeeDetails_Click(object sender, EventArgs e)
         {
-            SetCurrentMenuItem(sender);
+            this.currentMenuItem.Caption = GetCurrentMenuItem(sender);
             await LoadModule("MaintenanceFeeDetailsModule");
         }
 
         private async void mnuIncomingsBookTotal_Click(object sender, EventArgs e)
         {
-            SetCurrentMenuItem(sender);
+            this.currentMenuItem.Caption = GetCurrentMenuItem(sender);
             await LoadModule("IncomingsBookTotalModule");
         }
 
         private async void mnuIncomingsDetails_Click(object sender, EventArgs e)
         {
-            SetCurrentMenuItem(sender);
+            this.currentMenuItem.Caption = GetCurrentMenuItem(sender);
             await LoadModule("IncomingsDetailsModule");
         }
 
         private async void mnuBuildingCode_Click(object sender, EventArgs e)
         {
-            SetCurrentMenuItem(sender);
+            this.currentMenuItem.Caption = GetCurrentMenuItem(sender);
             await LoadModule("BuildingCodeModule");
         }
 
         private async void mnuUser_Click(object sender, EventArgs e)
         {
-            //this.currentMenuItem.Caption = $"{((AccordionControlElement)sender).OwnerElement?.Text} > {(sender as AccordionControlElement).Text}";
-            SetCurrentMenuItem(sender);
+            this.currentMenuItem.Caption = GetCurrentMenuItem(sender);
             await LoadModule("UserModule");
         }
 
         private async void mnuBackup_Click(object sender, EventArgs e)
         {
-            //this.currentMenuItem.Caption = $"{((AccordionControlElement)sender).OwnerElement?.Text} > {(sender as AccordionControlElement).Text}";
-            SetCurrentMenuItem(sender);
+            this.currentMenuItem.Caption = GetCurrentMenuItem(sender);
             await LoadModule("BackupModule");
         }
 
