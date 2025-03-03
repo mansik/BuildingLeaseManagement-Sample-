@@ -110,7 +110,6 @@ namespace BuildingLeaseUI
             // skinBarItem
             // 
             this.skinBarItem.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.skinBarItem.AllowSerializeChildren = DevExpress.Utils.DefaultBoolean.False;
             this.skinBarItem.Caption = "SKIN";
             this.skinBarItem.Id = 2;
             this.skinBarItem.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("skinBarItem.ImageOptions.SvgImage")));
