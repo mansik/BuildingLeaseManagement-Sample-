@@ -9,7 +9,7 @@ using System.Drawing;
 
 namespace BuildingLeaseUI.UI.Modules
 {
-    public partial class IncomingsBookTotalModule : DevExpress.DXperience.Demos.TutorialControlBase //DevExpress.XtraEditors.XtraUserControl
+    public partial class IncomingsBookTotalModule : DevExpress.XtraEditors.XtraUserControl
     {
         private readonly IncomingsBookTotalRepository _incomingsBookTotalRepository = new IncomingsBookTotalRepository();
         public IncomingsBookTotalModule()

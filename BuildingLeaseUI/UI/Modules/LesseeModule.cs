@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace BuildingLeaseUI.UI.Modules
 {
-    public partial class LesseeModule : DevExpress.DXperience.Demos.TutorialControlBase //DevExpress.XtraEditors.XtraUserControl
+    public partial class LesseeModule : DevExpress.XtraEditors.XtraUserControl
     {
         private readonly LesseeRepository _lesseeRepository = new LesseeRepository();
         private int _id = 0;

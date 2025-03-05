@@ -1,11 +1,11 @@
 using BuildingLease.Library;
 using BuildingLeaseUI.UI.Forms;
-using DevExpress.DXperience.Demos;
 using DevExpress.LookAndFeel;
 using DevExpress.XtraBars;
 using DevExpress.XtraBars.Navigation;
 using DevExpress.XtraEditors;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -32,43 +32,76 @@ namespace BuildingLeaseUI
                 mnuBackup.Enabled = false;
             }
         }
-
-        async Task LoadModuleAsync(ModuleInfo module)
+        #region LoadModuleAsync
+        private async Task LoadModuleAsync(string moduleName)
         {
-            await Task.Factory.StartNew(() =>
+            var control = fluentDesignFormContainer.Controls.Find(moduleName, false).FirstOrDefault();
+            if (control != null)
             {
-                if (!fluentDesignFormContainer.Controls.ContainsKey(module.Name))
-                {
-                    if (module.TModule is TutorialControlBase control)
-                    {
-                        control.Dock = DockStyle.Fill;
-                        control.CreateWaitDialog();
-                        fluentDesignFormContainer.Invoke(new MethodInvoker(delegate ()
-                        {
-                            fluentDesignFormContainer.Controls.Add(control);
-                            control.BringToFront();
-                            _activeModule = control; // 활성화된 모듈
-                        }));
-                    }
-                }
-                else
-                {
-                    var control = fluentDesignFormContainer.Controls.Find(module.Name, true);
-                    if (control.Length == 1)
-                    {
-                        fluentDesignFormContainer.Invoke(new MethodInvoker(delegate () { control[0].BringToFront(); }));
-                        _activeModule = control[0];// 활성화된 모듈
-                    }
-                }
+                await BringControlToFrontAsync(control);
+                return;
+            }
+
+            // Module의 위치가 변경되면 수정해야함.
+            // 명확한 네임스페이스 처리를 위해 typeof(MainForm).Namespace 사용
+            var moduleNamespace = $"{typeof(MainForm).Namespace}.UI.Modules";
+            var typeName = $"{moduleNamespace}.{moduleName}";
+            var type = Type.GetType(typeName);
+            if (type != null && Activator.CreateInstance(type) is XtraUserControl controlInstance)
+            {
+                controlInstance.Name = moduleName; // 모듈 이름 설정
+                await AddControlToContainerAsync(controlInstance);
+            }
+        }
+
+        private Task AddControlToContainerAsync(XtraUserControl controlInstance)
+        {
+            return RunOnUIThreadAsync(() =>
+            {
+                fluentDesignFormContainer.Controls.Add(controlInstance);
+                controlInstance.Dock = DockStyle.Fill;
+                controlInstance.BringToFront();
+                controlInstance.Select();
+                _activeModule = controlInstance;
             });
         }
 
-        private async Task LoadModule(string moduleName)
+        private Task BringControlToFrontAsync(Control control)
         {
-            if (ModulesInfo.GetItem(moduleName) == null)
-                ModulesInfo.Add(new ModuleInfo(moduleName, "BuildingLeaseUI.UI.Modules." + moduleName));
-            await LoadModuleAsync(ModulesInfo.GetItem(moduleName));
+            return RunOnUIThreadAsync(() =>
+            {
+                control.BringToFront();
+                control.Select();
+                _activeModule = control;
+            });
         }
+
+        /// <summary>
+        /// UI 스레드에서 안전하게 작업을 수행하기 위해 사용됩니다. 
+        /// 현재 스레드가 UI 스레드인지 확인하고, UI 스레드가 아닌 경우 BeginInvoke를 사용하여 UI 스레드에서 작업을 수행합니다. 
+        /// 비동기 작업을 처리하기 위해 TaskCompletionSource를 사용하여 작업이 완료될 때까지 기다릴 수 있도록 합니다.
+        /// </summary>
+        /// <param name="action"></param>
+        /// <returns></returns>
+        private Task RunOnUIThreadAsync(Action action)
+        {
+            if (InvokeRequired)
+            {
+                var tcs = new TaskCompletionSource<bool>();
+                BeginInvoke(new Action(() =>
+                {
+                    action();
+                    tcs.SetResult(true);
+                }));
+                return tcs.Task;
+            }
+            else
+            {
+                action();
+                return Task.CompletedTask;
+            }
+        }
+        #endregion LoadModuleAsync
 
         private void HideSkins(string[] skinsToHide)
         {
@@ -100,7 +133,7 @@ namespace BuildingLeaseUI
             //if (!string.IsNullOrEmpty(settings.SkinName))
             //    UserLookAndFeel.Default.SetSkinStyle(settings.SkinName);            
 
-            //UserLookAndFeel.Default.SetSkinStyle(AppConfig.GetAppConfig("SkinName"));
+            UserLookAndFeel.Default.SetSkinStyle(AppConfig.GetAppConfig("SkinName"));
 
             //this.fluentDesignFormContainer.Controls.Add(new CashBookModule() { Dock = DockStyle.Fill });
             //this.currentMenuItem.Caption = $"{mnuCashBook.Text}";
@@ -146,61 +179,61 @@ namespace BuildingLeaseUI
         private async void mnuCashBook_Click(object sender, EventArgs e)
         {
             this.currentMenuItem.Caption = $"{(sender as AccordionControlElement)?.Text}";
-            await LoadModule("CashBookModule");
+            await LoadModuleAsync("CashBookModule");
         }
 
         private async void mnuLessee_Click(object sender, EventArgs e)
         {
             this.currentMenuItem.Caption = GetCurrentMenuItem(sender);
-            await LoadModule("LesseeModule");
+            await LoadModuleAsync("LesseeModule");
         }
 
         private async void mnuLeaseContract_Click(object sender, EventArgs e)
         {
             this.currentMenuItem.Caption = GetCurrentMenuItem(sender);
-            await LoadModule("LeaseContractModule");
+            await LoadModuleAsync("LeaseContractModule");
         }
 
         private async void mnuInvoiceList_Click(object sender, EventArgs e)
         {
             this.currentMenuItem.Caption = GetCurrentMenuItem(sender);
-            await LoadModule("InvoiceListModule");
+            await LoadModuleAsync("InvoiceListModule");
         }
 
         private async void mnuMaintenanceFeeDetails_Click(object sender, EventArgs e)
         {
             this.currentMenuItem.Caption = GetCurrentMenuItem(sender);
-            await LoadModule("MaintenanceFeeDetailsModule");
+            await LoadModuleAsync("MaintenanceFeeDetailsModule");
         }
 
         private async void mnuIncomingsBookTotal_Click(object sender, EventArgs e)
         {
             this.currentMenuItem.Caption = GetCurrentMenuItem(sender);
-            await LoadModule("IncomingsBookTotalModule");
+            await LoadModuleAsync("IncomingsBookTotalModule");
         }
 
         private async void mnuIncomingsDetails_Click(object sender, EventArgs e)
         {
             this.currentMenuItem.Caption = GetCurrentMenuItem(sender);
-            await LoadModule("IncomingsDetailsModule");
+            await LoadModuleAsync("IncomingsDetailsModule");
         }
 
         private async void mnuBuildingCode_Click(object sender, EventArgs e)
         {
             this.currentMenuItem.Caption = GetCurrentMenuItem(sender);
-            await LoadModule("BuildingCodeModule");
+            await LoadModuleAsync("BuildingCodeModule");
         }
 
         private async void mnuUser_Click(object sender, EventArgs e)
         {
             this.currentMenuItem.Caption = GetCurrentMenuItem(sender);
-            await LoadModule("UserModule");
+            await LoadModuleAsync("UserModule");
         }
 
         private async void mnuBackup_Click(object sender, EventArgs e)
         {
             this.currentMenuItem.Caption = GetCurrentMenuItem(sender);
-            await LoadModule("BackupModule");
+            await LoadModuleAsync("BackupModule");
         }
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)

@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace BuildingLeaseUI.UI.Modules
 {
-    public partial class BuildingCodeModule : DevExpress.DXperience.Demos.TutorialControlBase //DevExpress.XtraEditors.XtraUserControl
+    public partial class BuildingCodeModule : DevExpress.XtraEditors.XtraUserControl
     {
         private readonly BuildingCodeRepository _buildingCodeRepository = new BuildingCodeRepository();
         private int _id = 0;

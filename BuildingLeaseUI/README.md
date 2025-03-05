@@ -31,13 +31,10 @@
 * 로그인 화면의 [이미지](https://www.shutterstock.com/search/building?page=3)는 
   * [shutterstock.com](https://www.shutterstock.com)에서 찾았으며 
   * 편집은 [피그마](https://www.figma.com/)를 이용하여 작성하였음
-* 참조추가 : DevExpress.Tutorial library - Fluent Design Form 에서 AccordionControl로 fluentDesignFormContainer에 폼을 호출할 때 사용
-  * C:\Program Files\DevExpress 24.2\Components\Bin\Framework\DevExpress.Tutorials.v24.2.dll
 * Devexpress Project Setting 
   * font 맑은 고딕, 10 -> 9.75로 변경됨.
   * DirectX = 체크: 차트 및 그리드 속도 향상
   * DPI Awareness = system
-* 각 세부 폼은 `사용자 컨트롤`로 추가 후 상속을 `: DevExpress.DXperience.Demos.TutorialControlBase //DevExpress.XtraEditors.XtraUserControl`로 변경
 * 속성
   * 어셈블리 이름: BuildingLeaseManagement
   * 기본 네임스페이스: BuildingLeaseUI	

@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace BuildingLeaseUI.UI.Modules
 {
-    public partial class UserModule : DevExpress.DXperience.Demos.TutorialControlBase //DevExpress.XtraEditors.XtraUserControl
+    public partial class UserModule : DevExpress.XtraEditors.XtraUserControl
     {
         private readonly UserRepository _userRepository = new UserRepository();
         private int _id = 0;

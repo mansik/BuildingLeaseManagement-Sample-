@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace BuildingLeaseUI.UI.Modules
 {
-    public partial class BackupModule : DevExpress.DXperience.Demos.TutorialControlBase //DevExpress.XtraEditors.XtraUserControl
+    public partial class BackupModule : DevExpress.XtraEditors.XtraUserControl
     {
         public BackupModule()
         {

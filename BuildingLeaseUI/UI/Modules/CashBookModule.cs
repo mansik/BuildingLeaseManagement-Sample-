@@ -14,7 +14,7 @@ using System.Windows.Forms;
 
 namespace BuildingLeaseUI.UI.Modules
 {
-    public partial class CashBookModule : DevExpress.DXperience.Demos.TutorialControlBase //DevExpress.XtraEditors.XtraUserControl
+    public partial class CashBookModule : DevExpress.XtraEditors.XtraUserControl
     {
         private readonly CashBookRepository _cashBookRepository = new CashBookRepository();
         private int _id = 0;

@@ -1,4 +1,5 @@
 using BuildingLeaseDataManager.Library.SqlDbAccess;
+using BuildingLeaseUI.Utils;
 using DevExpress.Data;
 using DevExpress.Drawing.Printing;
 using DevExpress.Export;
@@ -10,15 +11,12 @@ using System.Linq;
 
 namespace BuildingLeaseUI.UI.Modules
 {
-    public partial class InvoiceListModule : DevExpress.DXperience.Demos.TutorialControlBase //DevExpress.XtraEditors.XtraUserControl
+    public partial class InvoiceListModule : DevExpress.XtraEditors.XtraUserControl
     {
         private readonly InvoiceRepository _invoiceRepository = new InvoiceRepository();
         public InvoiceListModule()
         {
             InitializeComponent();
-
-            //내보내기 ExportDropDownButton 숨김
-            layoutControlItem3.Visibility = DevExpress.XtraLayout.Utils.LayoutVisibility.Never;
         }
 
         void LoadDataGridView()
@@ -364,8 +362,25 @@ namespace BuildingLeaseUI.UI.Modules
             printLink.ShowPreview();
         }
 
-        #region ExportTo
-        protected override void ExportToCore(String filename, string ext)
+        #region ExportTo 
+        void ExportTo(string ext, string filter)
+        {
+            string fileName = MainFormHelper.GetFileName($"*.{ext}", filter);
+            if (!string.IsNullOrEmpty(fileName))
+            {
+                try
+                {
+                    ExportToCore(fileName, ext);
+                    MainFormHelper.OpenExportedFile(fileName);
+                }
+                catch (Exception e)
+                {
+                    MainFormHelper.ShowExportErrorMessage(e);
+                }
+            }
+        }
+
+        void ExportToCore(String filename, string ext)
         {
             if (ext == "rtf") gridView.ExportToRtf(filename);
             if (ext == "docx") gridView.ExportToDocx(filename);
@@ -373,14 +388,15 @@ namespace BuildingLeaseUI.UI.Modules
             if (ext == "mht") gridView.ExportToMht(filename);
             if (ext == "html") gridView.ExportToHtml(filename);
             if (ext == "txt") gridView.ExportToText(filename);
-            if (ext == "xls") ExportToXlsInternal(filename);
-            if (ext == "xlsx") ExportToXlsxInternal(filename);
+            if (ext == "xls") ExportToXlsInternal(filename); //gridView.ExportToXls(filename);
+            if (ext == "xlsx") ExportToXlsxInternal(filename); // if (ext == "xlsx") gridView.ExportToXlsx(filename);
         }
+
         void ExportToXlsxInternal(string filename)
         {
             var options = new XlsxExportOptionsEx
             {
-                UnboundExpressionExportMode = UnboundExpressionExportMode.AsValue
+                UnboundExpressionExportMode = UnboundExpressionExportMode.AsFormula // 계산식  그대로 출력
             };
             gridView.ExportToXlsx(filename, options);
         }
@@ -388,7 +404,7 @@ namespace BuildingLeaseUI.UI.Modules
         {
             var options = new XlsExportOptionsEx
             {
-                UnboundExpressionExportMode = UnboundExpressionExportMode.AsValue
+                UnboundExpressionExportMode = UnboundExpressionExportMode.AsFormula // 계산식 결과 출력
             };
             gridView.ExportToXls(filename, options);
         }

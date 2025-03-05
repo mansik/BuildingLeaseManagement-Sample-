@@ -8,7 +8,7 @@ using System.Linq;
 
 namespace BuildingLeaseUI.UI.Modules
 {
-    public partial class IncomingsDetailsModule : DevExpress.DXperience.Demos.TutorialControlBase //DevExpress.XtraEditors.XtraUserControl
+    public partial class IncomingsDetailsModule : DevExpress.XtraEditors.XtraUserControl
     {
         private readonly IncomingsDetailsRepository _incomingsDetailsRepository = new IncomingsDetailsRepository();
         public IncomingsDetailsModule()

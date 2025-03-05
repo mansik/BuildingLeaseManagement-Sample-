@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace BuildingLeaseUI.UI.Modules
 {
-    public partial class LeaseContractModule : DevExpress.DXperience.Demos.TutorialControlBase //DevExpress.XtraEditors.XtraUserControl
+    public partial class LeaseContractModule : DevExpress.XtraEditors.XtraUserControl
     {
         private readonly LeaseContractRepository _contractRepository = new LeaseContractRepository();
         private int _lesseeId = 0;

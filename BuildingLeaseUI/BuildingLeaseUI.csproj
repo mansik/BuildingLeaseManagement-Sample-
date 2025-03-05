@@ -79,9 +79,6 @@
     <Reference Include="DevExpress.PivotGrid.v24.2.Core, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.RichEdit.v24.2.Core, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.RichEdit.v24.2.Export, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.Tutorials.v24.2, Version=24.2.5.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-    </Reference>
     <Reference Include="DevExpress.Data.Desktop.v24.2" />
     <Reference Include="DevExpress.Utils.v24.2" />
     <Reference Include="DevExpress.Sparkline.v24.2.Core" />
@@ -231,6 +228,7 @@
     <Compile Include="UI\Modules\IncomingsBookTotalModule.Designer.cs">
       <DependentUpon>IncomingsBookTotalModule.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\MainFormHelper.cs" />
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Report\CashBookReport.resx">
       <DependentUpon>CashBookReport.cs</DependentUpon>
@@ -261,6 +259,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Modules\InvoiceListModule.resx">
       <DependentUpon>InvoiceListModule.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\Modules\BackupModule.resx">
       <DependentUpon>BackupModule.cs</DependentUpon>

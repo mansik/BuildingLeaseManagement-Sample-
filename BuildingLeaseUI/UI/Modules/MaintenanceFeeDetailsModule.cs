@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace BuildingLeaseUI.UI.Modules
 {
-    public partial class MaintenanceFeeDetailsModule : DevExpress.DXperience.Demos.TutorialControlBase //DevExpress.XtraEditors.XtraUserControl
+    public partial class MaintenanceFeeDetailsModule : DevExpress.XtraEditors.XtraUserControl
     {
         private readonly MaintenanceFeeDetailsRepository _maintenanceFeeDetailsRepository = new MaintenanceFeeDetailsRepository();
         private MaintenanceFeeDetailsSettingModel _maintenanceFeeDetailsSettingModel = new MaintenanceFeeDetailsSettingModel();
