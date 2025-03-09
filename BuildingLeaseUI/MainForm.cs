@@ -14,7 +14,7 @@ namespace BuildingLeaseUI
     public partial class MainForm : DevExpress.XtraBars.FluentDesignSystem.FluentDesignForm
     {
         private Control _activeModule = null;
-        string[] skinsToHide = { "Seven Classic", "WXI", "Contrast", "2016", "2013", "2010", "2007", "Sharp" };
+        private readonly string[] _hiddenSkins = { "Seven Classic", "WXI", "Contrast", "2016", "2013", "2010", "2007", "Sharp" };
 
         public MainForm()
         {
@@ -124,7 +124,7 @@ namespace BuildingLeaseUI
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-            HideSkins(skinsToHide);
+            HideSkins(_hiddenSkins);
 
             // UserLookAndFeel Skin 적용: 프로젝트-속성-설정-SkinName 추가 후 작업
             // %AppData%\Local\어셈블리정보의 회사명\제품명_xxx\user.config 파일에 저장됨
