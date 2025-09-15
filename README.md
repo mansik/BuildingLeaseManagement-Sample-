@@ -52,8 +52,10 @@
 * 각각의 프로젝트 생성 방법은 각 프로젝트의 README.md 파일 참고
 * Setup 후 환경설정 파일 위치: % AppData %\Roaming 위치. 
     * C:\Users\사용자명\AppData\Roaming\프로젝트명\프로젝트명.config
+* 처음 실행시 `데이터베이스 비밀번호 입력창`이 나오며, `비밀번호`앞에 `sa@`를 입력하여야 한다. 
 * DB는 MS SQL Server 2022를 사용.
-    * sa 비번 변경시 BuildingLeaseUI 프로젝트에서 App.config 파일에서 add key="DatabasePassword" 항목의 value=""으로 설정후 재실행
+    * sa 비번 변경시 BuildingLeaseUI 프로젝트에서 App.config 파일에서 add key="DatabasePassword" 항목의 value=""으로 설정후 
+      프로그램 재실행하면 데이터베이스 비밀번호 입력창이 나오며, 비밀번호 앞에 'sa@'를 입력하여야 한다.
     * 현업에서 데이터베이스 생성 및 초기 데이터 삽입 : BuildingLeaseData폴더내 Script.BuildingLease_Database.sql, Script.PostDeployment.sql 실행
 * 쿼리는 StoredProcedure 사용. 
 * DB 연동은 Dapper를 사용(ADO.NET보다 사용편리)하여 Repository 패턴을 적용함.
